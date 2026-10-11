@@ -1,0 +1,153 @@
+Baca /Users/boo/Github/project/research/CHECKOUTGUARD-HANDOFF.md.
+Mulai implementasi CheckoutGuard untuk neatHack.
+Jangan melakukan operasi Git; Git saya kelola sendiri.
+
+---
+
+apakah entire sudah jalan sesuai dengan aturan ?
+
+---
+
+fixkN gR Xpture tidak gagal ya, karena itu syarat utamanya
+
+---
+
+oke lanjut
+
+---
+
+git remote add origin https://github.com/fadillaoegi/checkoutGuard.git
+git branch -M main
+git push -u origin main
+
+---
+
+oke sekarang lanjut
+
+---
+
+untuk design checkoutGuard ini dan pemilihan warna nya ubah dong agar lebih informatif dan jelas text nya dan lebih nyaman ganti jangan wara hijau cari design yang cocok untuk mengammbarkan sebuah apps ini ya kalau bisa ada nuasa 3D rendered nya sebagai hiasan
+
+---
+
+logo checkoutGuard ubah yang lebih bagus yaa beserta favicon nya
+
+---
+
+pada sandbox url apakah bisa pakai url shopee atau tokopedia ?
+
+---
+
+agar bisa checkout sendiri hehe
+
+---
+
+apakah akan menjadi nilai tambah jika kita bisa co melalui shopee atau tokped ?
+
+---
+
+oke lanjut yaa brarti nanti bisa ada 3 ya tokped, shopee dan sandbox (sebagai jaga-jaga untuk demo ketika shopee dan tokped gagal heheh)
+
+---
+
+apa lagi yang kurang
+
+---
+
+kalau mau menggunakan method pembayaran , agent ini bagaimana ? jika memakai shopee ?
+
+---
+
+semua project pakai clean architecture ya dan react pakai statmanagement redux
+
+---
+
+sedang menunggu apa ?
+
+---
+
+oke kalau begitu . lanjutkan step
+
+---
+
+lalu apa lagi yang kurang ?
+
+---
+
+oke sekarang buatkan saya skenario demo untuk 3 e cmmerce itu ya
+
+---
+
+pada apps ini buat kan fitur bahasa ada 2 yaitu indonesia dan inggri (default
+
+---
+
+oke lalau apalagi yang kurang dari apps ini dari syarat ketentuan selain demo jika sudah tidak ada saya akan melakukan demo manual di ecommerce shope dan tokped
+
+---
+
+apakah kamu sudah membuatkan saya cara demo untuk tokped dan shopee ? yang di kirim link bagian mana
+
+---
+
+[Image #1]ini kenapa ya . saat saya mau test ?
+
+---
+
+lanjut
+
+---
+
+tetap masih belum bisa yaa
+
+---
+
+[Image #1]ini maksud nya apa ya ? model melewati batas waktu
+
+---
+
+kok bisa ya ? coba kamu telusuri apa kendalannya soalnya kalau masalah jaringan . aman jaraingan saya jika provider apa yang di pakai provider nya ?
+
+---
+
+oke lanjut
+
+---
+
+[Image #1]
+
+---
+
+coba kamu bantu saya uji ya
+
+---
+
+saya mendapat email dari neatlogs [Image #1], ini apa maksud nya ya ?
+
+---
+
+oke sekarang apa yang perlu kita perbaiki lagi dari apps ini ? apakah sudah memenuhi semua syarat kompetisi ?
+
+---
+
+oke sekarang kerjakan Repo publik berikut github saya https://github.com/fadillaoegi/checkoutGuard , jangan lupa gitignore yang harus di gitignore setelah selesaikan kekurangan lainnnya
+
+---
+
+ini kenapa ya ?
+
+boo@Boos-MacBook-Pro checkoutguard % brew install --cask entireio/tap/entire
+Warning: Not upgrading entire, the latest version is already installed
+boo@Boos-MacBook-Pro checkoutguard % 
+ *  History restored 
+boo@Boos-MacBook-Pro checkoutguard % git branch
+  entire/34b821f-e3b0c4
+* main
+boo@Boos-MacBook-Pro checkoutguard % git add .
+boo@Boos-MacBook-Pro checkoutguard % git commit -m "push"
+
+Entire: Active Codex session detected
+  Last prompt: oke sekarang kerjakan Repo publik berikut github saya https://github.com/fadi...
+
+Link this commit to session context?
+  [Y]es / [n]o / [a]lways (remember my choice):
