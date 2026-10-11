@@ -1,0 +1,88 @@
+name: Verify CheckoutGuard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publication:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Install ripgrep for ignore-aware audit
+        run: sudo apt-get update && sudo apt-get install -y ripgrep
+      - name: Test publication audit boundaries
+        run: python3 scripts/test-publication-audit.py
+      - name: Audit public source and evidence
+        run: python3 scripts/audit-publication.py
+
+  backend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: checkoutguard
+          POSTGRES_USER: checkoutguard
+          POSTGRES_PASSWORD: checkoutguard_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U checkoutguard -d checkoutguard"
+          --health-interval 3s
+          --health-timeout 3s
+          --health-retries 15
+    defaults:
+      run:
+        working-directory: checkoutguard_BE
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: checkoutguard_BE/go.mod
+          cache-dependency-path: checkoutguard_BE/go.sum
+      - name: Verify Chrome availability
+        run: command -v google-chrome
+      - name: Go race, PostgreSQL and synthetic Chrome fixtures
+        env:
+          CHECKOUTGUARD_BROWSER_TEST: "1"
+          CHECKOUTGUARD_TEST_DATABASE_URL: postgres://checkoutguard:checkoutguard_ci@127.0.0.1:5432/checkoutguard?sslmode=disable
+        run: go test -race -timeout 90s ./...
+      - name: Go vet
+        run: go vet ./...
+
+  frontend:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: checkoutguard_FE
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24.15.0"
+          package-manager-cache: false
+      - uses: pnpm/action-setup@v6
+        with:
+          version: "11.1.3"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm test
+      - run: pnpm build

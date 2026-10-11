@@ -1,0 +1,132 @@
+{
+  "generated_from_verified_local_records": true,
+  "raw_prompts_and_credentials_included": false,
+  "runs": [
+    {
+      "case": "pricing-defect",
+      "run_id": "b87b1ae0-83a0-4355-b3ac-850d3fb6a4be",
+      "parent_run_id": null,
+      "scenario": "total_bug",
+      "basket": "alternate",
+      "status": "findings",
+      "synthetic": true,
+      "total_verified": true,
+      "expected_total_idr": 9800,
+      "displayed_total_idr": 11050,
+      "persisted_orders": 1,
+      "submit_actions": 1,
+      "duration_seconds": 21.3,
+      "findings": [
+        {
+          "kind": "incorrect_total",
+          "verified": true
+        }
+      ],
+      "provider": "publicai",
+      "requested_model": "swiss-ai/apertus-v1.5-70b",
+      "returned_model_label": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "reported_usage": {
+        "input_tokens": 12227,
+        "output_tokens": 202,
+        "cost_usd": null
+      },
+      "posthoc_known_usage_estimate_usd": 0.00315775,
+      "posthoc_estimate_basis": "Public AI catalog, checked 2026-10-11; not a verified invoice",
+      "screenshot": "pricing-defect.png",
+      "verified_png_count": 8,
+      "trace_id": "000d9deb6a723905d68a787ae9926c4f"
+    },
+    {
+      "case": "corrected-retest",
+      "run_id": "6b111e4c-30ff-44e2-a6cc-0c533eb3af71",
+      "parent_run_id": "b87b1ae0-83a0-4355-b3ac-850d3fb6a4be",
+      "scenario": "fixed",
+      "basket": "alternate",
+      "status": "passed",
+      "synthetic": true,
+      "total_verified": true,
+      "expected_total_idr": 9800,
+      "displayed_total_idr": 9800,
+      "persisted_orders": 1,
+      "submit_actions": 1,
+      "duration_seconds": 28.92,
+      "findings": [],
+      "provider": "publicai",
+      "requested_model": "swiss-ai/apertus-v1.5-70b",
+      "returned_model_label": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "reported_usage": {
+        "input_tokens": 12128,
+        "output_tokens": 179,
+        "cost_usd": null
+      },
+      "posthoc_known_usage_estimate_usd": 0.0031215,
+      "posthoc_estimate_basis": "Public AI catalog, checked 2026-10-11; not a verified invoice",
+      "screenshot": "corrected-retest.png",
+      "verified_png_count": 8,
+      "trace_id": "7a97b78bbc758fb1cbadf231ccb0f210"
+    },
+    {
+      "case": "payment-timeout",
+      "run_id": "b74d8ccb-9559-4a61-9c52-7eb3ae713815",
+      "parent_run_id": null,
+      "scenario": "timeout",
+      "basket": "standard",
+      "status": "passed",
+      "synthetic": true,
+      "total_verified": true,
+      "expected_total_idr": 12400,
+      "displayed_total_idr": 12400,
+      "persisted_orders": 1,
+      "submit_actions": 1,
+      "duration_seconds": 16.66,
+      "findings": [
+        {
+          "kind": "timeout_recovered",
+          "verified": true
+        }
+      ],
+      "provider": "publicai",
+      "requested_model": "swiss-ai/apertus-v1.5-70b",
+      "returned_model_label": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "reported_usage": {
+        "input_tokens": 12335,
+        "output_tokens": 202,
+        "cost_usd": null
+      },
+      "posthoc_known_usage_estimate_usd": 0.00318475,
+      "posthoc_estimate_basis": "Public AI catalog, checked 2026-10-11; not a verified invoice",
+      "screenshot": "payment-timeout.png",
+      "verified_png_count": 8,
+      "trace_id": "94f12c0013ff1e04832776d908767f78"
+    },
+    {
+      "case": "priced-retest",
+      "run_id": "8b2d9a3c-7d16-41fa-8f99-5cba3ea097c1",
+      "parent_run_id": "b87b1ae0-83a0-4355-b3ac-850d3fb6a4be",
+      "scenario": "fixed",
+      "basket": "alternate",
+      "status": "passed",
+      "synthetic": true,
+      "total_verified": true,
+      "expected_total_idr": 9800,
+      "displayed_total_idr": 9800,
+      "persisted_orders": 1,
+      "submit_actions": 1,
+      "duration_seconds": 34.98,
+      "findings": [],
+      "provider": "publicai",
+      "requested_model": "swiss-ai/apertus-v1.5-70b",
+      "returned_model_label": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "reported_usage": {
+        "input_tokens": 12361,
+        "output_tokens": 199,
+        "cost_usd": 0.0031897500000000003
+      },
+      "posthoc_known_usage_estimate_usd": 0.00318975,
+      "posthoc_estimate_basis": "Public AI catalog, checked 2026-10-11; not a verified invoice",
+      "screenshot": "priced-retest.png",
+      "verified_png_count": 8,
+      "trace_id": "db1fd6a1e4cb8d7159c6cefc1c0b3daa"
+    }
+  ]
+}

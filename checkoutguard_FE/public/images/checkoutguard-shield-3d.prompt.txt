@@ -1,0 +1,6 @@
+Tool: built-in image_gen.imagegen
+Asset: checkoutguard-shield-3d.png
+Background: transparent alpha
+
+Final prompt:
+Use case: stylized-concept. Asset type: decorative 3D rendered illustration for the hero of CheckoutGuard, a developer app that verifies checkout totals and prevents duplicate orders. Create a premium polished studio 3D render of a substantial cobalt-blue glass/acrylic shield with a white checkmark, with a small rounded white checkout receipt and a pale blue payment card grouped behind it. A few subtle floating rounded cubes for depth. Compact coherent composition, three-quarter isometric view, all objects comfortably inside the canvas, no cut-off edges. Blue cobalt, midnight navy, pale ice blue, white and brushed silver only. No green, teal, lime, purple or orange. Soft studio lighting, believable reflections, soft contact shadows, high-end restrained SaaS product illustration, smooth beveled materials, legible silhouettes at small sizes. Transparent background with actual alpha, no background scene, no pedestal, no border. No text, lettering, numbers, logos or watermark. This asset sits on the right side of a white/slightly blue dashboard hero; make it visually balanced and not busy.

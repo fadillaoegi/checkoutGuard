@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>CheckoutGuard</title>
+  <defs>
+    <linearGradient id="tile" x1="8" y1="3" x2="55" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#527FFC"/>
+      <stop offset="0.52" stop-color="#285AE9"/>
+      <stop offset="1" stop-color="#173CB3"/>
+    </linearGradient>
+    <linearGradient id="bag" x1="24" y1="20" x2="43" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DBE8FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="17" fill="url(#tile)"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="16.5" stroke="#FFFFFF" stroke-opacity="0.22"/>
+  <path d="M8 18C8 12.5 12.5 8 18 8H43" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="2" stroke-linecap="round"/>
+  <path d="M26 21V17C26 13.7 28.7 11 32 11C35.3 11 38 13.7 38 17V21" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M18 24C18 21.8 19.8 20 22 20H42C44.2 20 46 21.8 46 24V34.5C46 42.4 36.9 48.9 32 52C27.1 48.9 18 42.4 18 34.5V24Z" fill="#143CAA" fill-opacity="0.2" transform="translate(0 2)"/>
+  <path d="M18 24C18 21.8 19.8 20 22 20H42C44.2 20 46 21.8 46 24V34.5C46 42.4 36.9 48.9 32 52C27.1 48.9 18 42.4 18 34.5V24Z" fill="url(#bag)"/>
+  <path d="M25.5 33.5L30.5 38.5L39 29" stroke="#2457E7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

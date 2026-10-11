@@ -1,0 +1,32 @@
+{
+  "name": "checkoutguard-dashboard",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "pnpm check:architecture && tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "tsc --noEmit -p tsconfig.test.json && tsx --test tests/*.test.ts",
+    "check:architecture": "node scripts/check-architecture.mjs",
+    "format": "prettier --write src tests scripts package.json tsconfig.json tsconfig.test.json vite.config.ts",
+    "format:check": "prettier --check src tests scripts package.json tsconfig.json tsconfig.test.json vite.config.ts"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.13.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-redux": "^9.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.0"
+  }
+}

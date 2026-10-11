@@ -1,0 +1,106 @@
+{
+  "trace_id": "000d9deb6a723905d68a787ae9926c4f",
+  "status": "success",
+  "span_count": 15,
+  "root_count": 1,
+  "hierarchy_valid": true,
+  "duplicates": 0,
+  "llm_count": 7,
+  "input_tokens": 12227,
+  "output_tokens": 202,
+  "total_tokens": 12429,
+  "local_usage_matches": true,
+  "verified": true,
+  "spans": [
+    {
+      "name": "checkoutguard.checkout",
+      "kind": "workflow",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "fill",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "click",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "fill",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "verify_total",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "click",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "order_status",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+      "kind": "llm",
+      "input_present": true,
+      "output_present": true
+    },
+    {
+      "name": "finish",
+      "kind": "tool_call",
+      "input_present": true,
+      "output_present": true
+    }
+  ]
+}
