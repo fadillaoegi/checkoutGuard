@@ -448,5 +448,74 @@ dijalankan; tidak di-skip, dan tidak ada perubahan AppArmor global.
 
 Validasi lokal sesudah perbaikan: `go test -count=1 -race -timeout 90s ./...`
 dengan Chrome fixture, PostgreSQL dan flag CI lulus untuk semua package pada Mac.
-Keberhasilan Linux hosted sesudah perubahan masih memerlukan commit/push user
-dan workflow baru; pengujian Mac tidak membuktikan status CI GitHub sudah hijau.
+Pada saat validasi lokal tersebut, keberhasilan Linux hosted masih menunggu
+commit/push user dan workflow baru; hasil Mac saja tidak membuktikan CI hijau.
+
+Sesudah user mempublikasikan commit `0e2102650d2d23187dd147fd95d65d49bd294e05`,
+[workflow kedua](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38133238996)
+terverifikasi `completed/success` melalui API GitHub publik. Backend, frontend,
+dan publication semuanya success. Langkah Go race/PostgreSQL/synthetic Chrome
+dan Go vet lulus pada runner Ubuntu. Ini menutup kegagalan startup Chrome pada
+CI sebelumnya; tidak membuktikan checkout marketplace berhasil atau provider
+model sudah stabil. Perubahan dipublikasikan user; tidak ada operasi Git oleh agent.
+
+## Perbaikan label dan diagnostik request model
+
+Label span LLM sekarang selalu model yang diminta; model dari respons dicatat
+terpisah bersama batas timeout, error kind, retryability dan status pembacaan
+respons. Record disimpan pada usage tiap langkah dan output workflow yang
+dapat dikaitkan ke span ID. Hosted v3 memformat workflow output menjadi teks;
+marker JSON menjaga tipe diagnostik, tanpa mengubah prompt/request provider.
+
+Retest akhir 9689d682 passed 35,15 detik, total 9.800 IDR, tepat satu order dan
+submit, delapan PNG, tanpa model timeout. Trace 869bdb1c0d98cd794c3a895292fe23c7
+verified success: 15 span dan tujuh record diagnostik; seluruh label request
+Apertus dan respons SEA-LION terpisah, timeout 45000 ms, 12503 token cocok.
+Estimasi USD 0,003175. Lihat [diagnosis lengkap](MODEL-CONNECTION-DIAGNOSIS.md)
+dan [readback aman](../submission/evidence/model-diagnostics-trace.json).
+
+Go race Chrome/PostgreSQL, go vet, test scope output telemetry dan tiga test
+reader hosted lulus. Workflow CI memasukkan test reader; perubahan ini belum
+dijalankan CI hosted sampai user mempublikasikannya. Tidak ada operasi Git.
+
+## Hasil nyata cfo.ai dan pemeriksaan ekspor — 11 Oktober 2026
+
+User menyerahkan dua workbook, PDF dan ZIP hasil cfo.ai. Dua workbook memiliki
+hash identik; workbook dan PDF Downloads cocok dengan member ZIP. Salinan asli
+PDF, XLSX, Markdown serta manifest disertakan tanpa perubahan byte. Rangkuman,
+tautan dan provenance tersedia di [CFO-RESULTS.md](../submission/CFO-RESULTS.md).
+Screenshot browser berisi navigasi akun pribadi tidak disertakan.
+
+Pemeriksaan independen membaca cached XLSX, menghubungkan tiga observasi ke
+run curated dan menghitung ulang model bisnis di Python. **409 perbandingan
+angka cocok**, termasuk 75 periode dari tiga skenario, kontribusi tiga paket,
+break-even dan lima sensitivitas. Semua 11 sheet bebas Excel error cell;
+external relationship/macro member dan pola credential/akun yang diperiksa
+tidak ditemukan. Metadata serta teks PDF dipindai dan ketujuh halaman diperiksa
+visual; tidak ditemukan clipping atau overlap. Ini bukan native Excel
+recalculation atau pengujian interaksi simulator. Klaim pemeriksaan simulator
+di manifest asli adalah laporan dari cfo.ai, terpisah dari pemeriksaan lokal.
+
+Usulan Team US$99/bulan mencakup tiga workspace dan 500 pooled run. Biaya
+variabel lengkap US$0,0190856/run adalah asumsi; biaya support langganan,
+payment fee dan biaya tetap US$6.800/bulan dihitung terpisah. Base break-even
+96 langganan; angka cash runway belum tersedia karena saldo dan cash flow
+aktual belum diberikan. PDF membahas rumus serta input runway yang dibutuhkan.
+Defisit operasional kumulatif US$59.175 bukan kas atau runway. Semua proyeksi
+pendapatan dan pelanggan tetap asumsi. cfo.ai tidak menerima EVIDENCE.md saat
+membuat rencana; pencocokan runtime dilakukan kemudian oleh pemeriksaan lokal.
+
+Dashboard kini membuka PDF asli melalui tautan cfo.ai, dengan label Inggris
+dan Indonesia. README, checklist serta segmen video 2:19–2:44 memakai hasil
+aktual. PDF/XLSX di HTTP lokal dan production build cocok byte-for-byte dengan
+sumber. Tes frontend 15/15, format, dependency direction dan build lulus.
+Percobaan tes pertama terhalang izin socket tsx di sandbox; eksekusi ulang di
+luar sandbox lulus. QA Chrome dashboard juga lulus pada desktop/mobile dan
+dua bahasa, tanpa runtime exception atau overflow; tidak ada run yang dimulai.
+Audit publikasi menambahkan pemindaian isi archive terkompresi
+agar credential dalam sel XLSX tidak lolos pemindaian byte luar. Dua regression
+check tambahan lulus, sehingga total enam tes batas publikasi lulus.
+
+CI memasukkan pemeriksaan model CFO; hosted CI terbaru untuk perubahan ini
+tetap menunggu publikasi user. Tidak ada perubahan billing/akun, operasi Git,
+atau pesanan marketplace.

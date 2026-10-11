@@ -3,6 +3,7 @@ package application
 import (
 	"checkoutguard/internal/domain"
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 
@@ -45,6 +46,17 @@ func (a *Service) execute(ctx context.Context, run Run) {
 			log.Print("final run persistence failed; run cannot be confirmed complete")
 		}
 		output := map[string]any{"run_id": run.ID, "environment": run.Environment, "status": run.Status, "reason": run.Reason, "findings": run.Findings, "usage": run.Usage}
+		calls := []map[string]any{}
+		for _, step := range run.Steps {
+			if step.Usage.ModelCall != nil {
+				calls = append(calls, map[string]any{"step_number": step.Number, "diagnostics": step.Usage.ModelCall})
+			}
+		}
+		// Hosted v3 humanizes structured output keys. A JSON string preserves
+		// typed per-call observations and span IDs through that presentation.
+		if encoded, err := json.Marshal(calls); err == nil {
+			output["model_calls"] = "checkoutguard.model_calls.v1=" + string(encoded)
+		}
 		if run.IsMarketplace() {
 			output["order_verification"] = "unavailable"
 			output["checkout_review"] = run.CheckoutReview

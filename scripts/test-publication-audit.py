@@ -4,6 +4,7 @@ import importlib.util
 import struct
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location('publication_audit', Path(__file__).with_name('audit-publication.py'))
@@ -30,6 +31,25 @@ def index_fixture(names, version=2):
     return data + bytes(20)
 
 class PublicationAuditTests(unittest.TestCase):
+    def test_compressed_workbook_secret_is_blocked_without_printing_it(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / '.gitignore').write_bytes((audit.ROOT / '.gitignore').read_bytes())
+            (root / '.env.model.local').write_text('MODEL_API_KEY=synthetic-test-value\n')
+            with zipfile.ZipFile(root / 'plan.xlsx', 'w', compression=zipfile.ZIP_DEFLATED) as archive:
+                archive.writestr('xl/worksheets/sheet1.xml', '<t>synthetic-test-value</t>')
+            report = audit.audit(root)
+            self.assertIn({'file': 'plan.xlsx', 'kind': 'known_secret_value'}, report['issues'])
+            self.assertNotIn('synthetic-test-value', str(report))
+
+    def test_invalid_workbook_fails_the_audit(self):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / '.gitignore').write_bytes((audit.ROOT / '.gitignore').read_bytes())
+            (root / 'plan.xlsx').write_bytes(b'not an archive')
+            report = audit.audit(root)
+            self.assertIn({'file': 'plan.xlsx', 'kind': 'compressed_file_could_not_be_audited'}, report['issues'])
+
     def test_ignored_private_files_and_visible_reviewer_evidence(self):
         self.assertEqual(audit.ignore_contract(audit.ROOT), [])
 

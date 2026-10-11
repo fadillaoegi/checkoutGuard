@@ -86,6 +86,18 @@ verification of model weights or successful Apertus inference. These three runs
 had no model timeouts; previous failed runs remain documented in
 [EVALUATION.md](../docs/EVALUATION.md). Provider reliability is still unresolved.
 
+## Corrected model observability
+
+Retest `9689d682-97ac-4982-bfd6-538aff957d4e` passed in 35.15 seconds with one
+9800 IDR order, one submit, eight valid screenshots and no model timeout.
+[Hosted readback](evidence/model-diagnostics-trace.json) verifies all seven
+LLM calls in trace `869bdb1c0d98cd794c3a895292fe23c7`: requested Apertus labels
+remain stable; returned SEA-LION labels, 45000 ms client deadlines and error
+categories are separately correlated by span ID. Usage 12306 input + 197 output;
+estimated cost USD 0.003175. This demonstrates observability, not independent
+verification of serving model weights or provider stability. Older trace
+labels are historical and are not rewritten.
+
 ## Reproduction
 
 Follow the [README](../README.md) to configure private local credentials and
@@ -105,7 +117,18 @@ database. Evidence and safe summaries above remain inspectable without the DB.
 
 ## Competition status
 
-Runtime evidence is ready. Entire prerequisites pass, but the feature checkpoint
-and public commit still require verification after the user publishes the code.
-Actual cfo.ai output, demo video, building-in-public links and the official X
-quote submission remain pending. See [SUBMISSION-CHECKLIST.md](SUBMISSION-CHECKLIST.md).
+Runtime evidence is ready. The user has published the implementation and the
+existing hosted CI passes. Entire feature-checkpoint contents/access still
+require verification. The model diagnostics update requires user publication
+before its new CI checks can be verified on GitHub.
+Original cfo.ai PDF/XLSX/Markdown exports are now included; see
+[CFO-RESULTS.md](CFO-RESULTS.md) and [provenance](business/artifact-provenance.json).
+The three supplied runtime observations match this file's curated run records.
+The local [independent review](evidence/cfo-validation.json) matched 409 numeric
+comparisons, including 75 forecast periods and 5 sensitivities, and inspected
+all seven PDF pages. Original cfo.ai outputs are preserved byte-for-byte;
+cfo.ai did not receive EVIDENCE.md, so this local comparison is a separate check.
+Runway method is included; numerical cash runway requires actual dated cash
+inputs. All pricing, customer and financial projections remain assumptions.
+Demo video, building-in-public links and the official X quote submission remain
+pending. See [SUBMISSION-CHECKLIST.md](SUBMISSION-CHECKLIST.md).

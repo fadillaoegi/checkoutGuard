@@ -205,8 +205,17 @@ summary:focus-visible {
   color: #afc0d9;
   margin-left: auto;
 }
-.muted-partner {
-  color: #b5c1d5;
+.partner-link {
+  text-decoration: none;
+  border-radius: 8px;
+}
+.partner-link:hover,
+.partner-link:focus-visible {
+  background: #263753;
+}
+.partner-link:focus-visible {
+  outline: 2px solid #a9beff;
+  outline-offset: 2px;
 }
 .profile {
   border-top: 1px solid #33425a;

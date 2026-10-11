@@ -24,6 +24,10 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ripgrep
       - name: Test publication audit boundaries
         run: python3 scripts/test-publication-audit.py
+      - name: Test safe hosted trace diagnostics reader
+        run: python3 scripts/test-read-trace-diagnostics.py
+      - name: Verify original cfo.ai model against independent arithmetic
+        run: python3 scripts/review-cfo-model.py
       - name: Audit public source and evidence
         run: python3 scripts/audit-publication.py
 

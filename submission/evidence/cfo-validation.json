@@ -1,0 +1,125 @@
+{
+  "status": "pass",
+  "xlsx_sha256": "d208c2877f0c3757f6ef807c986ac8ca1ff1942c6a91e7f3969d065d182ae56f",
+  "checks": {
+    "sheets": 11,
+    "cached_formula_cells": 8045,
+    "excel_error_cells": 0,
+    "matched_private_or_secret_members": 0,
+    "external_relationships_or_macro_members": 0,
+    "independent_numeric_comparisons": 409,
+    "forecast_periods_checked": 75,
+    "one_way_sensitivities_checked": 5
+  },
+  "runtime_evidence_links": [
+    {
+      "workbook_row": 5,
+      "case": "pricing-defect",
+      "run_id": "b87b1ae0-83a0-4355-b3ac-850d3fb6a4be"
+    },
+    {
+      "workbook_row": 6,
+      "case": "corrected-retest",
+      "run_id": "6b111e4c-30ff-44e2-a6cc-0c533eb3af71"
+    },
+    {
+      "workbook_row": 7,
+      "case": "payment-timeout",
+      "run_id": "b74d8ccb-9559-4a61-9c52-7eb3ae713815"
+    }
+  ],
+  "mean_known_token_estimate_usd": 0.0031546666666666667,
+  "variable_cost_per_completed_run_usd": 0.0190856,
+  "fixed_monthly_cost_assumption_usd": 6800.0,
+  "base_break_even_subscriptions": 96,
+  "base_break_even_monthly_revenue_usd": 8650.666666666666,
+  "scenarios": {
+    "base": {
+      "periods_checked": 25,
+      "first_nonnegative_operating_month": "2028-03",
+      "peak_cumulative_operating_deficit_usd": 59175.21275503378,
+      "m12": {
+        "revenue_usd": 5585.833285229042,
+        "subscriptions_expected": 61.98828553275139,
+        "operating_result_usd": -2378.2951459293954,
+        "cumulative_operating_result_usd": -54260.06320884476
+      },
+      "m24": {
+        "revenue_usd": 13907.041796133775,
+        "subscriptions_expected": 154.33215310136126,
+        "operating_result_usd": 4208.71276955879,
+        "cumulative_operating_result_usd": -42990.579537991776
+      }
+    },
+    "conservative": {
+      "periods_checked": 25,
+      "first_nonnegative_operating_month": null,
+      "peak_cumulative_operating_deficit_usd": 129342.55558327622,
+      "m12": {
+        "revenue_usd": 1863.8398445280068,
+        "subscriptions_expected": 20.683796055181332,
+        "operating_result_usd": -5324.597984413035,
+        "cumulative_operating_result_usd": -71113.73749615235
+      },
+      "m24": {
+        "revenue_usd": 2870.984506306275,
+        "subscriptions_expected": 31.86049390475521,
+        "operating_result_usd": -4527.349621932833,
+        "cumulative_operating_result_usd": -129342.55558327622
+      }
+    },
+    "growth": {
+      "periods_checked": 25,
+      "first_nonnegative_operating_month": "2027-08",
+      "peak_cumulative_operating_deficit_usd": 31106.724645223134,
+      "m12": {
+        "revenue_usd": 12342.188158759356,
+        "subscriptions_expected": 138.67627144673435,
+        "operating_result_usd": 2968.4099510724755,
+        "cumulative_operating_result_usd": -25549.64998143189
+      },
+      "m24": {
+        "revenue_usd": 40764.85085320497,
+        "subscriptions_expected": 458.0320320584828,
+        "operating_result_usd": 25463.952680531867,
+        "cumulative_operating_result_usd": 137040.45608282523
+      }
+    }
+  },
+  "october_2028_sensitivity_operating_results_usd": {
+    "provider_10x": 2923.3852122416592,
+    "extra_attempts_100_percent": 4068.232555958899,
+    "browser_3x": 4072.900474829592,
+    "support_2x": 2116.654694184781,
+    "full_quota": 3488.696343924461
+  },
+  "limits": [
+    "Cached XLSX values compared to independently calculated model; original export unchanged.",
+    "No native Excel recalculation or interactive cfo.ai simulator testing performed by this review.",
+    "Original cfo.ai plan used supplied figures; EVIDENCE.md was not attached there.",
+    "Customer, price, cost and growth figures are planning assumptions, not validated traction or invoices.",
+    "Cash runway is uncalculated; cumulative operating result is not available cash.",
+    "Pattern checks are not a guarantee against every form of sensitive information."
+  ],
+  "git_commands_executed": false,
+  "review_date": "2026-10-11",
+  "pdf_review": {
+    "pages_visually_checked": 7,
+    "layout": "Readable; no clipping or overlap found",
+    "text_and_original_bytes_scan": "No known secret or selected account/email/path pattern matched",
+    "limits": "Original plan preserved; no new PDF or interactive simulator review was performed.",
+    "metadata_and_annotation_pattern_check": "pass",
+    "annotation_link_count": 0
+  },
+  "static_assets_check": {
+    "http_status_pdf": 200,
+    "http_status_xlsx": 200,
+    "responses_and_production_build_match_original_bytes": true
+  },
+  "frontend_verification": {
+    "tests_passed": 15,
+    "format": "pass",
+    "architecture_and_build": "pass",
+    "dashboard_browser_qa": "pass: desktop/mobile and English/Indonesian, no runtime exceptions or mobile overflow; no checkout started"
+  }
+}

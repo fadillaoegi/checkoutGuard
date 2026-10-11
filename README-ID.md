@@ -328,7 +328,10 @@ Capture Entire aktif. Commit anchor kosong `34b821f` serta remote/upstream main
 dibuat hanya atas izin khusus user. Commit/push fitur berikutnya dikelola user;
 checkpoint fitur yang dipublikasikan dan link reviewer masih perlu diverifikasi.
 
-cfo.ai masih **pending**: akses akun, rencana bisnis dari layanan tersebut, dan
-bukti penggunaannya belum tersedia. [Input rencana bisnis](docs/CFO-PLAN-INPUTS.md)
-disiapkan sebagai draft. Video, building in public, dan submission juga belum
-selesai; MVP ini belum memenuhi seluruh keluaran submission neatHack.
+cfo.ai sudah menghasilkan [rencana bisnis dan model Excel asli](submission/CFO-RESULTS.md).
+Pemeriksaan independen cocok untuk 75 periode proyeksi dan 5 sensitivitas.
+Tautan **cfo.ai → Rencana bisnis** di dashboard membuka PDF. Harga, biaya dan
+proyeksi pelanggan tetap berupa asumsi; metode runway tersedia, tetapi angka
+runway memerlukan saldo kas serta cash flow aktual. Video, building in public,
+verifikasi isi checkpoint Entire dan submission masih perlu diselesaikan.
+Perubahan lokal terbaru menunggu publikasi oleh user.

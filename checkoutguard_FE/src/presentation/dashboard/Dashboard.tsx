@@ -118,9 +118,15 @@ export function Dashboard() {
           <div className="partner">
             Entire <span>{t('Coding capture')}</span>
           </div>
-          <div className="partner muted-partner">
-            cfo.ai <span>{t('Plan pending')}</span>
-          </div>
+          <a
+            className="partner partner-link"
+            href="/business/CheckoutGuard-business-plan.pdf"
+            target="_blank"
+            rel="noreferrer"
+            title={t('Open business plan')}
+          >
+            cfo.ai <span>{t('Business plan')} ↗</span>
+          </a>
           <div className="profile">
             <span className="profile-avatar">FL</span>
             <div>

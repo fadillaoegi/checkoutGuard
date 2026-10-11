@@ -1,0 +1,210 @@
+[
+  {
+    "trace_id": "869bdb1c0d98cd794c3a895292fe23c7",
+    "returned_id": "869bdb1c0d98cd794c3a895292fe23c7",
+    "status": "success",
+    "span_count": 15,
+    "reported_span_count": 15,
+    "root_count": 1,
+    "hierarchy_valid": true,
+    "duplicates": 0,
+    "llm_count": 7,
+    "input_tokens": 12306,
+    "output_tokens": 197,
+    "total_tokens": 12503,
+    "spans": [
+      {
+        "name": "checkoutguard.checkout",
+        "kind": "workflow",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "d201bb3c4b96db59",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "d201bb3c4b96db59",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "fill",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "849fc0268a9ac3fa",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "849fc0268a9ac3fa",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "click",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "bd94bda8608ef833",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "bd94bda8608ef833",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "fill",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "87c0c2f768cd63ff",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "87c0c2f768cd63ff",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "click",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "22af3714d9e0c627",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "22af3714d9e0c627",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "verify_total",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "4b512d88815f9df7",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "4b512d88815f9df7",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "order_status",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      },
+      {
+        "name": "swiss-ai/apertus-v1.5-70b",
+        "kind": "llm",
+        "input_present": true,
+        "output_present": true,
+        "span_id": "2988a86200cd42f4",
+        "model_diagnostics": {
+          "requested_model": "swiss-ai/apertus-v1.5-70b",
+          "returned_model": "aisingapore/Qwen-SEA-LION-v4-32B-IT",
+          "returned_model_known": true,
+          "model_label_mismatch": true,
+          "span_id": "2988a86200cd42f4",
+          "timeout_ms": 45000,
+          "error_kind": "none",
+          "retryable": false,
+          "http_response_received": true,
+          "http_status_code": 200,
+          "response_decoded": true
+        }
+      },
+      {
+        "name": "finish",
+        "kind": "tool_call",
+        "input_present": true,
+        "output_present": true
+      }
+    ],
+    "expected_status": "success",
+    "local_usage_matches": true,
+    "verified": true,
+    "model_diagnostics_verified": true
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "source": "User-supplied actual cfo.ai exports, received 2026-10-11",
+  "publication_status": "Prepared in repository; no Git publication performed by coding agent",
+  "source_zip_sha256": "4f698f85affa58004a29c77ffd0bc8b7483f935cffef28c7d8859977ca314416",
+  "duplicate_workbook": "Financial model (3 pages).xlsx has identical bytes to CheckoutGuard-cfoai-model.xlsx; only one copy included",
+  "artifacts": [
+    {
+      "path": "checkoutguard_FE/public/business/CheckoutGuard-business-plan.pdf",
+      "sha256": "69af5ebc857030de069a42e33841849a623c91e3b7b2f7294d38eb30fafdd399",
+      "bytes": 34226,
+      "source": "Original cfo.ai ZIP member, byte-for-byte copy"
+    },
+    {
+      "path": "checkoutguard_FE/public/business/CheckoutGuard-cfoai-model.xlsx",
+      "sha256": "d208c2877f0c3757f6ef807c986ac8ca1ff1942c6a91e7f3969d065d182ae56f",
+      "bytes": 155939,
+      "source": "Original cfo.ai ZIP member, byte-for-byte copy"
+    },
+    {
+      "path": "submission/business/CheckoutGuard-business-plan.md",
+      "sha256": "09c6bc04e701dc1fbe4cc09268d713959d63243c597aa8bb9bca38d99bf9986c",
+      "bytes": 15742,
+      "source": "Original cfo.ai ZIP member, byte-for-byte copy"
+    },
+    {
+      "path": "submission/business/cfoai-original-manifest.json",
+      "sha256": "1f963e15423748ef2b877ff5c374a478eb92d04dfc26ed5e8ec4931820af592a",
+      "bytes": 2803,
+      "source": "Original cfo.ai ZIP member, byte-for-byte copy"
+    }
+  ],
+  "checks": {
+    "pdf_and_xlsx_match_downloads": true,
+    "pdf_layout_reviewed_pages": 7,
+    "independent_validation": "submission/evidence/cfo-validation.json"
+  },
+  "omissions": [
+    "Personal browser/account screenshot not included.",
+    "cfo.ai Canvas light/dark image files were not in the supplied ZIP.",
+    "ZIP README not installed as repository README."
+  ],
+  "limitations": [
+    "Original cfo.ai runtime inputs were pasted figures; EVIDENCE.md was not attached there.",
+    "Local independent validation links those figures to existing curated runtime evidence.",
+    "Numerical cash runway requires actual dated cash/receipt/payment inputs; operating deficit is not cash runway."
+  ]
+}

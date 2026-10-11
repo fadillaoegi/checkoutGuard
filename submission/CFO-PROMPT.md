@@ -1,5 +1,9 @@
 # Input to paste into cfo.ai — not a cfo.ai result
 
+The user supplied actual cfo.ai exports on 11 October 2026. See
+[CFO-RESULTS.md](CFO-RESULTS.md) for the original plan, workbook and independent
+review. This prompt remains as input provenance.
+
 Use after the user has access to the event account. No signup, payment method,
 subscription or account operation was performed by the coding agent.
 

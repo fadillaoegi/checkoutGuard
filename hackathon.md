@@ -374,3 +374,19 @@ checkpoint Entire; rencana cfo.ai; video dan materi submission.
 - Go/PG/Chrome race tests, go vet, 15 frontend tests dan build lulus. QA UI
   diulang setelah agent idle dan lulus; percobaan pertama bertumpuk dengan run
   aktif dan gagal pada kondisi tombol. Tidak ada pesanan marketplace atau Git.
+
+## Ekspor cfo.ai nyata — 11 Oktober 2026
+
+- User menyerahkan hasil cfo.ai. Dua workbook identik; PDF dan workbook cocok
+  dengan ZIP. PDF/XLSX/Markdown dan manifest asli disalin tanpa perubahan byte;
+  hanya satu workbook disertakan. Screenshot akun pribadi tetap di luar paket.
+- Pemeriksaan independen cocok untuk 409 angka, termasuk 75 periode forecast
+  dan lima sensitivitas. Tiga observasi token/durasi cocok dengan run curated.
+  Semua 11 sheet bebas error cell; tujuh halaman PDF ditinjau secara visual.
+- Rencana mencakup pricing, biaya, tiga skenario pendapatan dan metode runway.
+  Runway numerik menunggu data kas aktual; defisit operasional bukan saldo kas.
+  Semua asumsi tetap diberi label. Hasil dan batas bukti ada di CFO-RESULTS.md.
+- Dashboard kini membuka PDF melalui tautan cfo.ai dalam dua bahasa. Script
+  demo memakai hasil aktual, dan CI memeriksa cached model secara independen.
+  Tes frontend 15/15 serta build lulus. Audit mencakup isi XLSX terkompresi;
+  enam tes audit lulus. Operasi Git dan publikasi tetap dikelola user.

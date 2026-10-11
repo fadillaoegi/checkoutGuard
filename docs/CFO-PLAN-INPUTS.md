@@ -1,8 +1,10 @@
 # Input rencana bisnis untuk cfo.ai — draft
 
-Dokumen ini belum merupakan keluaran cfo.ai. Akses akun dan bukti penggunaan
-layanan masih pending. Data berikut disiapkan agar rencana bisnis bisa dibangun
-dari hasil MVP tanpa mengarang penjualan atau biaya aktual.
+Dokumen ini adalah draft input historis, bukan keluaran cfo.ai. User telah
+menyerahkan ekspor asli pada 11 Oktober 2026; lihat
+[hasil dan pemeriksaan](../submission/CFO-RESULTS.md). Sampel lima run di bawah
+berbeda dari tiga run terbaru pada [prompt yang digunakan](../submission/CFO-PROMPT.md)
+dan workbook asli. Pertahankan konteks sampel saat membandingkan rata-rata.
 
 ## Produk dan pelanggan
 
@@ -40,6 +42,6 @@ Sumber: [katalog resmi](https://platform.publicai.co/models).
 5. Catatan asumsi, sensitivitas kenaikan penggunaan, dan revisi setelah data
    pelanggan serta tarif aktual tersedia.
 
-Simpan hasil rencana, asumsi dan bukti pemakaian cfo.ai untuk demo. Aktivasi akun
-atau billing dilakukan user sesuai instruksi akses acara; statusnya belum
-dikonfirmasi. Draft ini tidak memenuhi sendiri kewajiban penggunaan cfo.ai.
+Hasil rencana, asumsi dan ekspor asli kini disertakan melalui CFO-RESULTS.md.
+Rekam penggunaan nyata cfo.ai dalam demo. Aktivasi akun/billing dikelola user;
+coding agent tidak melakukan operasi akun atau pembayaran.

@@ -16,7 +16,6 @@ import (
 
 	"checkoutguard/internal/config"
 	"checkoutguard/internal/domain"
-	neatlogs "github.com/neatlogs/neatlogs-go"
 )
 
 type Model struct {
@@ -50,19 +49,15 @@ func NewModel() *Model {
 }
 func (m *Model) Ready() bool { return m.Key != "" && m.Base != "" && m.Name != "" }
 func (m *Model) Next(ctx context.Context, messages []Message) (action Action, usage Usage, err error) {
-	nlMessages := make([]neatlogs.LLMMessage, len(messages))
-	for i, msg := range messages {
-		nlMessages[i] = neatlogs.LLMMessage{Role: msg.Role, Content: msg.Content}
-	}
-	ctx, span := neatlogs.StartLLMSpan(ctx, neatlogs.LLMCallOptions{Provider: m.Provider, Model: m.Name, Messages: nlMessages, MaxTokens: 450})
+	ctx, call := m.startCallTrace(ctx, messages)
 	defer func() {
 		if err != nil {
-			span.SetError(err)
 			if usage.Input == 0 && usage.Output == 0 {
 				usage.CostIncomplete = true
 			}
 		}
-		span.End()
+		diagnostics := call.finish(err)
+		usage.ModelCall = &diagnostics
 	}()
 	if !m.Ready() {
 		return action, usage, &domain.PlannerError{Kind: "configuration", Message: "model configuration is incomplete; set endpoint, key and model for the same provider"}
@@ -82,6 +77,7 @@ func (m *Model) Next(ctx context.Context, messages []Message) (action Action, us
 		return action, usage, requestError(ctx, err)
 	}
 	defer response.Body.Close()
+	call.responseReceived, call.httpStatus = true, response.StatusCode
 	if response.StatusCode != 200 {
 		return action, usage, statusError(response.StatusCode, response.Header)
 	}
@@ -115,15 +111,12 @@ func (m *Model) Next(ctx context.Context, messages []Message) (action Action, us
 		usage.CostUSD = &v
 	}
 	usage.CostIncomplete = usage.CostUSD == nil
-	span.SetUsage(usage.Input, usage.Output, result.Usage.Total)
-	span.SetModel(result.Model)
-	span.SetResponseID(result.ID)
+	call.recordResponse(result.Model, result.ID, usage, result.Usage.Total)
 	if len(result.Choices) != 1 {
 		return action, usage, invalidResponse("model must return one action", true)
 	}
 	content := strings.TrimSpace(result.Choices[0].Message.Content)
-	span.SetOutputMessage("assistant", content)
-	span.SetFinishReason(result.Choices[0].Finish)
+	call.recordOutput(content, result.Choices[0].Finish)
 	decoder := json.NewDecoder(strings.NewReader(content))
 	decoder.DisallowUnknownFields()
 	if err = decoder.Decode(&action); err != nil {

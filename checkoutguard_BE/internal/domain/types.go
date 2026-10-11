@@ -11,11 +11,12 @@ type Action struct {
 	Reason   string `json:"reason"`
 }
 type Usage struct {
-	Model          string   `json:"model,omitempty"`
-	Input          int      `json:"input_tokens"`
-	Output         int      `json:"output_tokens"`
-	CostUSD        *float64 `json:"cost_usd"`
-	CostIncomplete bool     `json:"cost_incomplete,omitempty"`
+	ModelCall      *ModelCall `json:"model_call,omitempty"`
+	Model          string     `json:"model,omitempty"`
+	Input          int        `json:"input_tokens"`
+	Output         int        `json:"output_tokens"`
+	CostUSD        *float64   `json:"cost_usd"`
+	CostIncomplete bool       `json:"cost_incomplete,omitempty"`
 }
 type Step struct {
 	Number    int    `json:"number"`

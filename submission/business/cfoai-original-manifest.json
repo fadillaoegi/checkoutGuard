@@ -1,0 +1,47 @@
+{
+  "prepared_date": "2026-10-11",
+  "publication_status": "Not published; public-ready download only",
+  "source": "Actual cfo.ai saved model and export",
+  "export_filename": "CheckoutGuard-cfoai-model.xlsx",
+  "export_sha256": "d208c2877f0c3757f6ef807c986ac8ca1ff1942c6a91e7f3969d065d182ae56f",
+  "privacy_review": "No matched personal/account/credential identifiers or external workbook links in exported XML; no hyperlinks; financial planning fees are assumptions, not account payment information.",
+  "runtime_evidence": "User-supplied pasted figures; EVIDENCE.md not attached",
+  "screenshot_status": "Canvas light/dark renders reviewed in chat but image files not available for preservation; images not included.",
+  "checks": [
+    "base: all 25 periods matched independent calculations for subscriptions, revenue, contribution, operating result and cumulative result.",
+    "conservative: all 25 periods matched independent calculations for subscriptions, revenue, contribution, operating result and cumulative result.",
+    "growth: all 25 periods matched independent calculations for subscriptions, revenue, contribution, operating result and cumulative result.",
+    "Five one-way sensitivities matched independent October 2028 calculations; signs reduce operating results as expected.",
+    "Annual native reads checked: flows sum monthly values; 2028 year-end balance is intentionally absent because the horizon stops in October. No full-year 2028 balance is asserted.",
+    "Actual export: scanned XML/relationships for personal/account/credential identifiers, checked external links and Excel error cells. No matched private identifiers or external workbook links found; export preserved byte-for-byte."
+  ],
+  "scenario_results": {
+    "base": {
+      "m12_revenue": 5585.833285229044,
+      "m24_revenue": 13907.041796133777,
+      "m24_subscriptions": 154.33215310136129,
+      "m24_operating": 4208.7127695587915,
+      "m24_cumulative": -42990.57953799174,
+      "first_nonnegative_month": "2028-03",
+      "peak_cumulative_operating_loss": 59175.21275503376
+    },
+    "conservative": {
+      "m12_revenue": 1863.8398445280072,
+      "m24_revenue": 2870.9845063062767,
+      "m24_subscriptions": 31.86049390475523,
+      "m24_operating": -4527.349621932831,
+      "m24_cumulative": -129342.5555832762,
+      "first_nonnegative_month": "Not reached through October 2028",
+      "peak_cumulative_operating_loss": 129342.5555832762
+    },
+    "growth": {
+      "m12_revenue": 12342.188158759356,
+      "m24_revenue": 40764.850853204975,
+      "m24_subscriptions": 458.03203205848286,
+      "m24_operating": 25463.95268053187,
+      "m24_cumulative": 137040.45608282526,
+      "first_nonnegative_month": "2027-08",
+      "peak_cumulative_operating_loss": 31106.72464522313
+    }
+  }
+}

@@ -18,8 +18,9 @@ Entire, serta cfo.ai. [Ketentuan resmi neatHack](https://neatlogs.com/hackathon)
   rencana bisnis asli cfo.ai. Logo atau prompt saja belum membuktikan penggunaan.
 - Push user sudah mengirim commit `380ed7a` dan satu checkpoint ref Entire.
   Periksa isi checkpoint yang terhubung sebelum merekam; gunakan ID aktual.
-- Hasil cfo.ai masih pending. Gunakan [CFO-PROMPT.md](CFO-PROMPT.md), lalu simpan
-  hasilnya. Jangan menerbitkan video final dengan segmen partner kosong.
+- Hasil cfo.ai sudah tersedia: [PDF dan model Excel asli](CFO-RESULTS.md).
+  Buka sesi asli cfo.ai dan bagian business plan; siapkan PDF halaman 1–2 dan 4
+  sebagai bukti ekspor. Dashboard juga menyediakan tautan rencana bisnis.
 - Tutup notifikasi/tab pribadi dan sembunyikan credential, email akun, billing,
   alamat, serta data pelanggan dari rekaman.
 
@@ -91,11 +92,11 @@ Ini transaksi sintetis tanpa pembayaran uang nyata.
 **Layar:** trace model timeout, pohon span workflow/model/tool, lalu trace retest
 dan panel estimasi biaya aplikasi. Sorot perubahan adapter model bila terbaca.
 
-> “Di neatlogs, workflow memuat panggilan model dan tool beserta waktu, input,
-> dan hasil. Trace gagal menunjukkan model timeout. Kami menambahkan penanganan
-> error dan batas retry; keandalan provider masih menjadi batasan. Perbaikan
-> observabilitas yang terukur: biaya sebelumnya tidak tersedia, lalu retest
-> melaporkan estimasi sekitar nol koma nol nol tiga dua dolar.”
+> “Neatlogs menunjukkan request mencapai batas client 45 detik. Apertus adalah
+> model yang diminta; respons sukses menyebut SEA-LION. Kami memisahkan keduanya
+> dan merekam error tiap request, lalu membatasi retry. Retest menyelesaikan satu
+> pesanan. Biaya yang tampil adalah estimasi dari token yang diketahui; provider
+> masih bisa timeout.”
 
 **Tab/bukti:**
 
@@ -104,6 +105,11 @@ dan panel estimasi biaya aplikasi. Sorot perubahan adapter model bila terbaca.
 - Sesudah konfigurasi tarif: `db1fd6a1e4cb8d7159c6cefc1c0b3daa`;
   12.361 input + 199 output token, satu order, **US$0,00318975 estimasi**.
   [Readback](evidence/priced-retest-trace.json).
+
+- Label/diagnostik sesudah perbaikan: `869bdb1c0d98cd794c3a895292fe23c7`;
+  pada output workflow cari `Model Calls`, lalu sorot satu `requested_model`,
+  `returned_model`, `timeout_ms` dan `error_kind` yang terkait ID span.
+  [Readback terverifikasi](evidence/model-diagnostics-trace.json).
 
 **Teks:** `Unknown cost → US$0.00318975 estimate · Not an invoice`.
 Tampilkan biaya dari aplikasi jika UI neatlogs tidak memuat angka itu.
@@ -127,20 +133,26 @@ sebagai bukti implementasi atau memperkirakan isi checkpoint.
 ### 2:19–2:44 — cfo.ai: rencana bisnis
 
 **Layar:** hasil asli Ari di cfo.ai: pricing/kuota, costs, revenue scenarios,
-runway; tunjukkan perubahan asumsi dan hasil.
+dan metode runway. Sorot paket Team, biaya per run dan tabel sensitivitas yang
+sudah dihasilkan; kemudian tunjukkan ekspor asli PDF atau Excel.
 
-**Narasi setelah hasil nyata tersedia:**
+**Narasi:**
 
-> “Kami memakai cfo.ai untuk merencanakan harga, biaya per pemeriksaan,
-> pendapatan, dan runway. Pelanggan serta pendapatan proyeksi diberi label
-> asumsi. Saat jumlah pemeriksaan atau harga token berubah, kami mengecek
-> perubahan biaya dan margin. Biaya hosting dan support ikut diperhitungkan.”
+> “Cfo.ai menyarankan paket Team 99 dolar per bulan, dengan estimasi biaya
+> variabel sekitar dua sen per pemeriksaan. Model mencakup tiga skenario
+> pendapatan dan sensitivitas support. Semua angka bisnis adalah asumsi.
+> Metode runway tersedia; perhitungannya menunggu data kas aktual.”
 
 **Teks:** `Pricing · Costs · Revenue · Runway · Assumptions labelled`.
-Uji 1.000 versus 10.000 run/bulan, lalu dua kali harga token dengan input lain
-tetap. Bila saldo belum diketahui, tampilkan rumus runway/input yang diperlukan.
-Minta revisi jika biaya hosting/support belum tercakup sebelum memakai narasi.
-Simpan ekspor/screenshot asli; prompt kita sendiri bukan keluaran cfo.ai.
+Tambahkan label angka biaya **US$0,0190856/run · Planning estimate**; support
+bulanan per langganan, payment fee dan biaya tetap masih dihitung terpisah.
+Tabel sensitivitas PDF halaman 2 menunjukkan support ×2 menurunkan hasil
+operasional base Oktober 2028 dari sekitar US$4.209 menjadi US$2.117.
+Tampilkan tabel hasil yang tersedia; jangan mengklaim kontrol simulator sudah
+diuji. PDF halaman 4 membahas runway yang belum dihitung. Jangan menyebut
+defisit kumulatif US$59.175 sebagai saldo, runway atau kebutuhan dana pasti.
+Screenshot browser pribadi dari chat tidak masuk paket publik; rekam panel
+rencana tanpa sidebar akun, bookmark dan tab pribadi.
 
 ### 2:44–2:51 — Batas marketplace
 
@@ -185,7 +197,9 @@ asli tersedia dan bebas informasi pribadi.
 > tests. We document limitations and use neatlogs to investigate them.
 > Code and evidence: https://github.com/fadillaoegi/checkoutGuard
 
-Tambahkan hasil cfo.ai dan link checkpoint setelah bukti aktual siap. Simpan
+Tambahkan hasil cfo.ai: “The actual cfo.ai plan models capped pricing, variable
+run costs and three revenue scenarios; cash runway awaits real cash inputs.”
+Tambahkan link checkpoint setelah isi dan aksesnya diverifikasi. Simpan
 link progress di [SUBMISSION-CHECKLIST.md](SUBMISSION-CHECKLIST.md) setelah user
 mempublikasikannya. Submission final harus mengutip posting resmi neatlogs dan
 memuat team, proyek, repo, serta link demo. Membuka draft belum berarti submit.

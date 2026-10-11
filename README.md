@@ -104,7 +104,11 @@ artifacts are available separately in `submission/evidence/`.
 
 Current runtime requests select `swiss-ai/apertus-v1.5-70b` through Public AI,
 but successful responses have been labelled `aisingapore/Qwen-SEA-LION-v4-32B-IT`.
-Both are recorded; this is not independent proof of the serving model weights.
+New LLM spans keep the requested model as their label and record the response
+label separately in persisted `step.usage.model_call` diagnostics. Workflow
+output carries the same records, correlated by span ID for hosted readback.
+Historical spans may use the response label on success; this is not independent
+proof of the serving model weights.
 Provider timeouts remain intermittent. The three successful demo runs do not
 establish production reliability. [Diagnosis](docs/MODEL-CONNECTION-DIAGNOSIS.md)
 and [candidate provider setup](docs/PROVIDER-CANDIDATE.md) document the evidence
@@ -127,6 +131,13 @@ access, preserves failed page checks, and offers Sandbox selection without
 starting a run automatically. It does not complete access challenges.
 
 ## Tests and diagnostics
+
+Safe hosted diagnostics parser (no credentials or network required):
+
+```sh
+python3 scripts/test-read-trace-diagnostics.py
+```
+
 
 Backend with optional real PostgreSQL and synthetic Chrome fixtures:
 
@@ -189,21 +200,27 @@ Curated sandbox PNGs and safe trace/run summaries in `submission/evidence/`
 are intentionally public. Raw runs/prompts and marketplace/account screenshots
 are not part of that package. The CI workflow runs publication checks, Go/PG/
 Chrome fixture tests, frontend tests and builds without production API keys.
-The first hosted workflow passed frontend/publication checks but failed to
-start Chrome under Ubuntu's sandbox restrictions. A fixture-test-only Chrome
-configuration fix is prepared locally; a new hosted run after publication is
-still needed. See [evaluation](docs/EVALUATION.md).
+After a fixture-test-only fix for Ubuntu's Chrome sandbox restrictions,
+[hosted CI passed](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38133238996)
+on commit `0e21026`: backend race/PG/Chrome tests and Go vet, frontend tests/build,
+and publication audit. This verifies synthetic fixtures, not live marketplace
+checkout or model-provider reliability. See [evaluation](docs/EVALUATION.md).
 
 ## neatHack status
 
 neatlogs integration and runtime readback are proven. Entire capture prerequisites
-pass; the feature checkpoint and public implementation commit still need
-verification. Actual cfo.ai business-plan output, demo video and publication
-links are pending. This repository preparation is not a completed submission.
+pass; feature-checkpoint contents and reviewer access still need verification.
+The user has published the implementation and hosted CI passes for `0e21026`.
+Actual [cfo.ai business-plan exports](submission/CFO-RESULTS.md) are included:
+pricing, cost assumptions, three revenue scenarios and a runway method.
+Numerical cash runway awaits actual dated cash inputs. Demo video and publication
+links remain pending; the latest local changes await user publication.
+This repository preparation is not a completed submission.
 
 [Submission checklist](submission/SUBMISSION-CHECKLIST.md) ·
 [Demo script](submission/DEMO-SCRIPT.md) ·
 [cfo.ai inputs](submission/CFO-PROMPT.md) ·
+[cfo.ai results](submission/CFO-RESULTS.md) ·
 [Detailed evaluation](docs/EVALUATION.md) · [Build log](hackathon.md)
 
 Git operations and publication remain user-managed. Do not put credentials,

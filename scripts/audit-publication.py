@@ -107,7 +107,7 @@ def known_secrets(root):
     return values
 
 def ignore_contract(root):
-    public = ['README.md', '.env.example', 'docs/examples/model-candidate.env.example', 'docs/examples/publicai-pricing.env.example', '.entire/settings.json', '.entire/.gitignore', 'checkoutguard_FE/pnpm-lock.yaml', 'checkoutguard_BE/go.sum', 'submission/evidence/runs.json', 'submission/evidence/retest.png', '.github/workflows/ci.yml']
+    public = ['README.md', '.env.example', 'docs/examples/model-candidate.env.example', 'docs/examples/publicai-pricing.env.example', '.entire/settings.json', '.entire/.gitignore', 'checkoutguard_FE/pnpm-lock.yaml', 'checkoutguard_BE/go.sum', 'submission/evidence/runs.json', 'submission/evidence/retest.png', '.github/workflows/ci.yml', 'checkoutguard_FE/public/business/CheckoutGuard-business-plan.pdf', 'checkoutguard_FE/public/business/CheckoutGuard-cfoai-model.xlsx', 'submission/CFO-RESULTS.md']
     private = ['.env', '.env.model-candidate.local', 'config/secret.env', 'config/secret.env.backup', '.pnpm-store/v11/index.db', '.codex/hooks.json', '.aws/credentials', '.agents/session.json', '.entire/settings.local.json', '.entire/metadata/session.json', 'checkoutguard_BE/tmp/marketplace-profiles/shopee/Cookies', 'checkoutguard_BE/evidence/run/0.png', 'checkoutguard_BE/bin/server', 'checkoutguard_FE/node_modules/library/index.js', 'checkoutguard_FE/dist/index.html', 'tmp/run.json', 'coverage/results.json', 'secret.key', 'client.pem', 'Cookies', 'Login Data', 'storageState.json', 'auth-state.json', 'backup.dump']
     with tempfile.TemporaryDirectory(prefix='checkoutguard-ignore-') as directory:
         fixture = Path(directory)
@@ -118,6 +118,26 @@ def ignore_contract(root):
         shutil.copyfile(root / '.gitignore', fixture / '.gitignore')
         visible = visible_files(fixture)
         return [{'file': p, 'kind': 'public_file_ignored'} for p in public if p not in visible] + [{'file': p, 'kind': 'private_file_not_ignored'} for p in private if p in visible]
+
+def secret_kinds(data, secrets):
+    kinds = {kind for kind, pattern in PATTERNS.items() if pattern.search(data)}
+    if any(value in data for value in secrets): kinds.add('known_secret_value')
+    return kinds
+
+def compressed_secret_kinds(path, secrets):
+    # XLSX stores text and formulas in compressed XML; raw-byte scanning alone
+    # cannot detect credentials pasted into a cell or document property.
+    kinds = set()
+    try:
+        with zipfile.ZipFile(path) as archive:
+            entries = archive.infolist()
+            if len(entries) > 2000 or sum(item.file_size for item in entries) > 20 << 20:
+                return {'compressed_file_too_large_for_audit'}
+            for item in entries:
+                kinds.update(secret_kinds(archive.read(item), secrets))
+    except (OSError, ValueError, RuntimeError, zipfile.BadZipFile):
+        return {'compressed_file_could_not_be_audited'}
+    return kinds
 
 def audit(root):
     root = root.resolve()
@@ -142,9 +162,10 @@ def audit(root):
             continue
         data = path.read_bytes()
         checked += 1
-        if any(value in data for value in secrets): issues.append({'file': name, 'kind': 'known_secret_value'})
-        for kind, pattern in PATTERNS.items():
-            if pattern.search(data): issues.append({'file': name, 'kind': kind})
+        kinds = secret_kinds(data, secrets)
+        if path.suffix.lower() in ('.xlsx', '.xlsm', '.zip'):
+            kinds.update(compressed_secret_kinds(path, secrets))
+        for kind in sorted(kinds): issues.append({'file': name, 'kind': kind})
         manifest.append({'file': name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
     return {'status': 'pass' if not issues else 'fail', 'files_checked': checked, 'tracked_paths_checked': len(tracked), 'ignore_contract': 'pass' if not contract else 'fail', 'issues': issues, 'git_commands_executed': False, 'staged_and_historical_blobs_checked': False, 'manifest': manifest}
 
