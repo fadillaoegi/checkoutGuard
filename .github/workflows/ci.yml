@@ -60,8 +60,12 @@ jobs:
       - name: Go race, PostgreSQL and synthetic Chrome fixtures
         env:
           CHECKOUTGUARD_BROWSER_TEST: "1"
+          # Only the loopback fixture test reads this flag. Ubuntu's AppArmor
+          # policy can prevent Chrome from creating its namespace sandbox.
+          CHECKOUTGUARD_TEST_CHROME_NO_SANDBOX: "1"
+          CHROME_PATH: /usr/bin/google-chrome
           CHECKOUTGUARD_TEST_DATABASE_URL: postgres://checkoutguard:checkoutguard_ci@127.0.0.1:5432/checkoutguard?sslmode=disable
-        run: go test -race -timeout 90s ./...
+        run: go test -v -race -timeout 90s ./...
       - name: Go vet
         run: go vet ./...
 

@@ -189,7 +189,10 @@ Curated sandbox PNGs and safe trace/run summaries in `submission/evidence/`
 are intentionally public. Raw runs/prompts and marketplace/account screenshots
 are not part of that package. The CI workflow runs publication checks, Go/PG/
 Chrome fixture tests, frontend tests and builds without production API keys.
-Remote CI success is unverified until the user publishes the implementation.
+The first hosted workflow passed frontend/publication checks but failed to
+start Chrome under Ubuntu's sandbox restrictions. A fixture-test-only Chrome
+configuration fix is prepared locally; a new hosted run after publication is
+still needed. See [evaluation](docs/EVALUATION.md).
 
 ## neatHack status
 

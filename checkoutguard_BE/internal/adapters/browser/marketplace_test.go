@@ -103,7 +103,19 @@ func TestMarketplaceDOMPreparation(t *testing.T) {
 	defer server.Close()
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
-	browser, closeBrowser := chromedp.NewContext(ctx)
+	options := append([]chromedp.ExecAllocatorOption{}, chromedp.DefaultExecAllocatorOptions[:]...)
+	if path := os.Getenv("CHROME_PATH"); path != "" {
+		options = append(options, chromedp.ExecPath(path))
+	}
+	// Ubuntu CI can deny Chrome's user-namespace sandbox via AppArmor. This
+	// explicit opt-in is confined to this synthetic loopback fixture test;
+	// application browsers must keep their normal sandbox configuration.
+	if os.Getenv("CHECKOUTGUARD_TEST_CHROME_NO_SANDBOX") == "1" {
+		options = append(options, chromedp.NoSandbox)
+	}
+	allocator, closeAllocator := chromedp.NewExecAllocator(ctx, options...)
+	defer closeAllocator()
+	browser, closeBrowser := chromedp.NewContext(allocator)
 	defer closeBrowser()
 	if err := chromedp.Run(browser, chromedp.Navigate(server.URL+"/checkout")); err != nil {
 		t.Fatal(err)

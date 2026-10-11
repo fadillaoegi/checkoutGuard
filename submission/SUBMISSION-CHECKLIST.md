@@ -9,11 +9,12 @@ on 11 October 2026. This is a readiness record, not confirmation of submission.
 | Goal-driven agent with real tool use/state/verification | Proven for synthetic sandbox | Keep synthetic scope clear |
 | Failure recovery | One order after payment timeout verified | Preserve original timeout evidence |
 | Runtime neatlogs traces | Hosted readback verified | Add dashboard screenshots or accessible trace links |
-| Entire use | Local capture prerequisites pass | User commits implementation; verify resulting checkpoint and reviewer access |
+| Entire use | Local capture prerequisites pass; user push output reports one checkpoint ref sent | Verify checkpoint contents linked to implementation commit and reviewer access |
 | cfo.ai pricing/cost/revenue/runway plan | Pending; inputs prepared | Generate actual plan through cfo.ai and include export/screenshots |
-| Public code with commits during the hackathon | Repository visibility verified public; local source not committed | User publishes source and verifies event-dated implementation commits |
+| Public code with commits during the hackathon | User push output confirms implementation commit `380ed7a` on public `main` | Verify commit timestamp and reviewer access |
+| GitHub Actions | First workflow: frontend/publication passed; backend Chrome startup failed due to Ubuntu sandbox restrictions | Local fixture-only fix prepared and tested; user pushes fix, then verify new hosted run |
 | Before/after improvement evidence | Store-fixture retest and exact-label cost observability verified | Preserve scope and source/checkpoint provenance; this does not establish provider reliability or autonomous source repair |
-| Demo video ≤3 minutes covering all three partners | Script prepared | Record completed partner workflows, export, verify duration and accessible link |
+| Demo video ≤3 minutes covering all three partners | Indonesian recording script updated; target 2:55, sandbox focus and marketplace limitations | Record real partner workflows, export, verify duration and accessible link |
 | Building in public | Draft prepared | Publish genuine progress and keep #neatHack links |
 | Official quote post on X | Pending | Quote the official submission post with team, project, repo and demo, then publish |
 | Deadline | 12 Oct 20:30 WIB opening; planned close 13 Oct 01:25 WIB | Follow confirmed cutoff in Discord |
@@ -22,6 +23,18 @@ Sandbox results and curated evidence: [EVIDENCE.md](EVIDENCE.md). Shopee and
 Tokopedia remain experimental preparation adapters; logged-in checkout success
 has not been demonstrated. No requirement to make a real marketplace purchase
 was found in the official event page.
+
+Recording sequence and ready-to-read narration: [DEMO-SCRIPT.md](DEMO-SCRIPT.md).
+Keep unsuccessful marketplace tests as limitations; use sandbox results for
+the complete demonstrated workflow. Switching environments does not recover
+marketplace access.
+
+Deadline rechecked against the official page: submission opens Monday
+**12 October 2026 at 20:30 WIB**, with a planned close Tuesday
+**13 October at 01:25 WIB** (12 October 19:00–23:55 IST).
+The confirmed cutoff is announced on the official Discord; the website still
+labels the closing time as planned. Prepare the video and cfo.ai evidence before
+the opening window.
 
 ## Checks before the user commits
 

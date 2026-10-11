@@ -424,3 +424,29 @@ lulus. QA UI pertama dijalankan bersamaan dengan retest aktif dan pemeriksaan
 tombol gagal karena launch dikunci. Sesudah agent idle, QA ulang lulus untuk
 desktop/mobile, dua bahasa, modal, form marketplace dan notice fixture. QA
 kini memeriksa precondition idle dan tidak memulai checkout.
+
+## Perbaikan CI Chrome Ubuntu setelah publikasi source
+
+User mempublikasikan implementasi melalui commit `380ed7a` ke `main`; output
+push juga melaporkan satu checkpoint ref Entire ikut terkirim. Pada
+[workflow pertama](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38131575451),
+frontend dan publication lulus. Backend gagal di `TestMarketplaceDOMPreparation`:
+Chrome mengeluarkan `No usable sandbox!` saat startup. Tes model, PostgreSQL,
+application, dependency direction, HTTP API dan domain pada log tersebut lulus.
+Ini kegagalan startup browser pada runner Ubuntu, bukan kegagalan model atau
+checkout Shopee/Tokopedia.
+
+Log Chrome menunjuk pembatasan user namespaces/AppArmor pada Ubuntu 23.10+.
+[Dokumentasi Chromium](https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md)
+menjelaskan hubungan pembatasan tersebut dengan sandbox Chrome. Perbaikannya
+terbatas pada tes fixture loopback: `_test.go` menggunakan ExecAllocator eksplisit,
+menerima `CHROME_PATH`, dan mengaktifkan `chromedp.NoSandbox` hanya jika
+`CHECKOUTGUARD_TEST_CHROME_NO_SANDBOX=1`. Workflow menetapkan flag itu khusus
+langkah tes, memilih `/usr/bin/google-chrome`, dan memakai `go test -v`.
+Konfigurasi browser aplikasi dan kebijakan checkout tidak diubah. Tes DOM tetap
+dijalankan; tidak di-skip, dan tidak ada perubahan AppArmor global.
+
+Validasi lokal sesudah perbaikan: `go test -count=1 -race -timeout 90s ./...`
+dengan Chrome fixture, PostgreSQL dan flag CI lulus untuk semua package pada Mac.
+Keberhasilan Linux hosted sesudah perubahan masih memerlukan commit/push user
+dan workflow baru; pengujian Mac tidak membuktikan status CI GitHub sudah hijau.
