@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4NKBNCP60MN7M5BXS143W16",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 9,
+  "files_touched": [
+    ".github/workflows/ci.yml",
+    "README-ID.md",
+    "README.md",
+    "checkoutguard_BE/internal/adapters/model/model.go",
+    "checkoutguard_BE/internal/adapters/model/tracing.go",
+    "checkoutguard_BE/internal/adapters/model/tracing_test.go",
+    "checkoutguard_BE/internal/adapters/telemetry/tracer.go",
+    "checkoutguard_BE/internal/adapters/telemetry/tracer_test.go",
+    "checkoutguard_BE/internal/application/runner.go",
+    "checkoutguard_BE/internal/domain/model_call.go",
+    "checkoutguard_BE/internal/domain/types.go",
+    "checkoutguard_FE/public/business/CheckoutGuard-business-plan.pdf",
+    "checkoutguard_FE/public/business/CheckoutGuard-cfoai-model.xlsx",
+    "checkoutguard_FE/src/presentation/dashboard/Dashboard.tsx",
+    "checkoutguard_FE/src/presentation/i18n/messages.ts",
+    "checkoutguard_FE/src/presentation/style.css",
+    "docs/CFO-PLAN-INPUTS.md",
+    "docs/EVALUATION.md",
+    "docs/MODEL-CONNECTION-DIAGNOSIS.md",
+    "hackathon.md",
+    "scripts/audit-publication.py",
+    "scripts/read-traces.py",
+    "scripts/review-cfo-model.py",
+    "scripts/test-publication-audit.py",
+    "scripts/test-read-trace-diagnostics.py",
+    "submission/CFO-PROMPT.md",
+    "submission/CFO-RESULTS.md",
+    "submission/DEMO-SCRIPT.md",
+    "submission/EVIDENCE.md",
+    "submission/SUBMISSION-CHECKLIST.md",
+    "submission/business/CheckoutGuard-business-plan.md",
+    "submission/business/artifact-provenance.json",
+    "submission/business/cfoai-original-manifest.json",
+    "submission/evidence/cfo-validation.json",
+    "submission/evidence/model-diagnostics-trace.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 418392,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 16615680,
+    "output_tokens": 84752,
+    "api_call_count": 141,
+    "subagent_tokens_complete": true
+  }
+}
