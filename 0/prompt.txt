@@ -1,0 +1,136 @@
+folder docs menurut kamu tidak perlu di gitignore ?
+
+---
+
+boo@Boos-MacBook-Pro checkoutguard % git push origin main
+[entire] Pushing 1 checkpoint ref(s) to origin............................... done
+Enumerating objects: 177, done.
+Counting objects: 100% (177/177), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (159/159), done.
+Writing objects: 100% (176/176), 2.22 MiB | 252.00 KiB/s, done.
+Total 176 (delta 6), reused 157 (delta 6), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), done.
+To https://github.com/fadillaoegi/checkoutGuard.git
+   34b821f..380ed7a  main -> main
+boo@Boos-MacBook-Pro checkoutguard %
+
+---
+
+bagaimana cara untuk test hasil penggunaan cfo.ai
+
+---
+
+Ari itu apa ?
+
+---
+
+oiya untuk shopee dan tokped masih gagal apakah kita ikut menyertakan di demo sebagai report ? atau di nhilangkan saja bagaimana baiknya ? agar sesuai syarat lketentuan kompetisi ?
+
+---
+
+oke selarang perbarui scrip viode untuk pembuatan demo ya
+
+---
+
+cek deadline tanggal bertapa dan saya mendapatkan email itu ini [Image #1] , da yang failed coba kamu fixkan ya dan cari tau apa masalah nya
+
+---
+
+Run go test -race -timeout 90s ./...
+  go test -race -timeout 90s ./...
+  shell: /usr/bin/bash -e {0}
+  env:
+    GOTOOLCHAIN: local
+    CHECKOUTGUARD_BROWSER_TEST: 1
+    CHECKOUTGUARD_TEST_DATABASE_URL: ***127.0.0.1:5432/checkoutguard?sslmode=disable
+go: downloading github.com/neatlogs/neatlogs-go v0.1.12
+go: downloading github.com/chromedp/cdproto v0.0.0-20260321001828-e3e3800016bc
+go: downloading github.com/chromedp/chromedp v0.15.1
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/jackc/pgx/v5 v5.11.0
+go: downloading go.opentelemetry.io/otel v1.44.0
+go: downloading go.opentelemetry.io/otel/trace v1.44.0
+go: downloading github.com/go-json-experiment/json v0.0.0-20260214004413-d219187c3433
+go: downloading github.com/gobwas/ws v1.4.0
+go: downloading go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.44.0
+go: downloading go.opentelemetry.io/otel/sdk v1.44.0
+go: downloading go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.44.0
+go: downloading go.opentelemetry.io/proto/otlp v1.10.0
+go: downloading google.golang.org/protobuf v1.36.11
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading github.com/chromedp/sysutil v1.1.0
+go: downloading github.com/gobwas/httphead v0.1.0
+go: downloading github.com/gobwas/pool v0.2.1
+go: downloading golang.org/x/sys v0.45.0
+go: downloading github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0
+go: downloading google.golang.org/grpc v1.81.1
+go: downloading github.com/jackc/pgpassfile v1.0.0
+go: downloading github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761
+go: downloading golang.org/x/text v0.37.0
+go: downloading golang.org/x/sync v0.20.0
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading github.com/go-logr/logr v1.4.3
+go: downloading go.opentelemetry.io/otel/metric v1.44.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/cenkalti/backoff/v5 v5.0.3
+go: downloading google.golang.org/genproto/googleapis/api v0.0.0-20260526163538-3dc84a4a5aaa
+go: downloading golang.org/x/net v0.55.0
+go: downloading google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa
+?   	checkoutguard/cmd/brandassets	[no test files]
+?   	checkoutguard/cmd/modelprobe	[no test files]
+?   	checkoutguard/cmd/server	[no test files]
+?   	checkoutguard/cmd/traceprobe	[no test files]
+?   	checkoutguard/cmd/visualcheck	[no test files]
+--- FAIL: TestMarketplaceDOMPreparation (6.40s)
+    marketplace_test.go:109: chrome failed to start:
+        [9461:9461:1011/103758.459868:FATAL:content/browser/zygote_host/zygote_host_impl_linux.cc:129] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+          "commandline-enabled-feature-1" = "NetworkService"
+          "osarch" = "x86_64"
+          "pid" = "9461"
+          "ptype" = "browser"
+        
+        [1011/103759.832241:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+        [1011/103759.832287:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+        Received signal 6
+        #0 0x55d68edb2262 base::debug::CollectStackTrace()
+        #1 0x55d68ed9ca0e base::debug::StackTrace::StackTrace()
+        #2 0x55d68edb1cd8 base::debug::(anonymous namespace)::StackDumpSignalHandler()
+        #3 0x7f0966e45330 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4532f)
+        #4 0x7f0966e9ec0c pthread_kill
+        #5 0x7f0966e4527e gsignal
+        #6 0x7f0966e288ff abort
+        #7 0x55d68ed8b8a5 base::debug::BreakDebuggerAsyncSafe()
+        #8 0x55d68ecd0573 base::RepeatingCallback<>::Run()
+        #9 0x55d68ecd0435 logging::LogMessage::HandleFatal()
+        #10 0x55d68ecd0027 logging::LogMessage::Flush()
+        #11 0x55d68ecd05b9 logging::LogMessageFatal::~LogMessageFatal()
+        #12 0x55d68bb9dbe3 content::ZygoteHostImpl::Init()
+        #13 0x55d68d96f3fb content::ContentMainRunnerImpl::Initialize()
+        #14 0x55d68d96cb07 content::RunContentProcess()
+        #15 0x55d68d96cf37 content::ContentMain()
+        #16 0x55d687dc837d ChromeMain
+        #17 0x7f0966e2a1ca (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9)
+        #18 0x7f0966e2a28b __libc_start_main
+        #19 0x55d687dc802a _start
+          r8: 00003310000d6663  r9: 0000000000000928 r10: 0000000000000008 r11: 0000000000000246
+         r12: 0000000000000006 r13: 0000000000000b8b r14: 0000000000000016 r15: 00007ffdbe0a75d0
+          di: 00000000000024f5  si: 00000000000024f5  bp: 00007ffdbe0a7480  bx: 00000000000024f5
+          dx: 0000000000000006  ax: 0000000000000000  cx: 00007f0966e9ec0c  sp: 00007ffdbe0a7440
+          ip: 00007f0966e9ec0c efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+         trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+        [end of stack trace]
+        
+FAIL
+FAIL	checkoutguard/internal/adapters/browser	6.414s
+ok  	checkoutguard/internal/adapters/model	1.076s
+ok  	checkoutguard/internal/adapters/postgres	1.126s
+?   	checkoutguard/internal/adapters/telemetry	[no test files]
+ok  	checkoutguard/internal/application	2.008s
+ok  	checkoutguard/internal/architecture	1.007s
+?   	checkoutguard/internal/config	[no test files]
+ok  	checkoutguard/internal/delivery/httpapi	1.010s
+ok  	checkoutguard/internal/domain	1.005s
+FAIL
+Error: Process completed with exit code 1.
