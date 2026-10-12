@@ -1,0 +1,102 @@
+{
+  "checked_date": "2026-10-11",
+  "method": "Unauthenticated GitHub HTTPS API; no Git commands",
+  "head_sha": "a134e4ac6383444081bc5ff73c3b6ea3bdb302ec",
+  "workflow_run_id": 38144551603,
+  "workflow_url": "https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "backend",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603/job/114485065864",
+      "started_at": "2026-10-11T13:47:04Z",
+      "completed_at": "2026-10-11T13:47:42Z",
+      "checks": [
+        {
+          "name": "Verify Chrome availability",
+          "conclusion": "success"
+        },
+        {
+          "name": "Go race, PostgreSQL and synthetic Chrome fixtures",
+          "conclusion": "success"
+        },
+        {
+          "name": "Go vet",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stop containers",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "publication",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603/job/114485065989",
+      "started_at": "2026-10-11T13:47:04Z",
+      "completed_at": "2026-10-11T13:47:18Z",
+      "checks": [
+        {
+          "name": "Install ripgrep for ignore-aware audit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test publication audit boundaries",
+          "conclusion": "success"
+        },
+        {
+          "name": "Test safe hosted trace diagnostics reader",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify original cfo.ai model against independent arithmetic",
+          "conclusion": "success"
+        },
+        {
+          "name": "Audit public source and evidence",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "frontend",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603/job/114485066089",
+      "started_at": "2026-10-11T13:47:04Z",
+      "completed_at": "2026-10-11T13:47:23Z",
+      "checks": [
+        {
+          "name": "Run pnpm/action-setup@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run pnpm install --frozen-lockfile",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run pnpm format:check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run pnpm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run pnpm build",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Applies only to published commit a134e4a; later local runway/context review changes have not run in hosted CI.",
+    "Synthetic fixture CI does not establish marketplace checkout or provider reliability."
+  ],
+  "git_commands_executed": false
+}

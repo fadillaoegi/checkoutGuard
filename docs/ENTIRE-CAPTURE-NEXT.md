@@ -32,3 +32,20 @@ User mengelola commit/push fitur. Sesudah commit tersebut, verifikasi committed
 checkpoint yang memuat implementasi dan link yang bisa dibuka reviewer. Anchor
 kosong yang sudah dipush tidak memuat source aplikasi. Jangan memasukkan file
 credential atau menganggap state PostgreSQL sebagai checkpoint Entire.
+
+## Checkpoint publik terverifikasi — 11 Oktober 2026
+
+User mempublikasikan commit `a134e4ac6383444081bc5ff73c3b6ea3bdb302ec`.
+Trailer `Entire-Checkpoint` menunjuk `01M4NKBNCP60MN7M5BXS143W16`.
+Pembacaan API GitHub tanpa autentikasi mengonfirmasi ref remote sama dengan
+ref lokal; metadata root dan session berisi ID checkpoint yang sama, agent
+Codex, serta 35 file yang tepat sama dengan file commit. Metadata dan blob
+transkrip tersedia secara publik. Tidak ada operasi Git dalam pemeriksaan ini.
+
+[Catatan verifikasi aman](../submission/evidence/entire-checkpoint.json)
+tidak menyalin prompt atau transkrip mentah. Pemeriksaan lanjutan pada arsip asli
+menemukan keputusan, patch dan output terkait serta mencocokkan tujuh file
+dengan blob commit publik. [Panduan dan batas review](../submission/ENTIRE-REVIEW.md)
+menyediakan record yang dapat ditampilkan dalam segmen demo.
+Pesan retry pada output push berakhir `pushed 1 of 1`, sehingga kegagalan awal
+tidak menunjukkan kegagalan akhir pengiriman checkpoint.

@@ -1,0 +1,55 @@
+{
+  "kind": "hosted-readback-of-saved-sandbox-video-source-runs",
+  "checked_at": "2026-10-11T19:34:58.322988+00:00",
+  "traces": [
+    {
+      "trace_id": "4102ea1e8e143672a7e41c813b14418a",
+      "status": "success",
+      "span_count": 15,
+      "reported_span_count": 15,
+      "root_count": 1,
+      "hierarchy_valid": true,
+      "duplicates": 0,
+      "llm_count": 7,
+      "input_tokens": 12590,
+      "output_tokens": 214,
+      "total_tokens": 12804,
+      "local_usage_matches": true,
+      "verified": true,
+      "requested_models": [
+        "swiss-ai/apertus-v1.5-70b"
+      ],
+      "returned_models": [
+        "aisingapore/Qwen-SEA-LION-v4-32B-IT"
+      ],
+      "model_label_mismatch_count": 7
+    },
+    {
+      "trace_id": "aedd5ac65bb1a9895f7e2d894893af98",
+      "status": "success",
+      "span_count": 15,
+      "reported_span_count": 15,
+      "root_count": 1,
+      "hierarchy_valid": true,
+      "duplicates": 0,
+      "llm_count": 7,
+      "input_tokens": 12383,
+      "output_tokens": 206,
+      "total_tokens": 12589,
+      "local_usage_matches": true,
+      "verified": true,
+      "requested_models": [
+        "swiss-ai/apertus-v1.5-70b"
+      ],
+      "returned_models": [
+        "aisingapore/Qwen-SEA-LION-v4-32B-IT"
+      ],
+      "model_label_mismatch_count": 7
+    }
+  ],
+  "notes": [
+    "Historical executions; video review does not create a new checkout or inference request.",
+    "Workflow success for the baseline means the defect was detected; the displayed total remains incorrect.",
+    "Requested and returned labels are recorded separately; a label is not independent proof of model weights."
+  ]
+}

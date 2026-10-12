@@ -28,6 +28,8 @@ jobs:
         run: python3 scripts/test-read-trace-diagnostics.py
       - name: Verify original cfo.ai model against independent arithmetic
         run: python3 scripts/review-cfo-model.py
+      - name: Check cash runway calculation boundaries
+        run: python3 scripts/test-runway.py
       - name: Audit public source and evidence
         run: python3 scripts/audit-publication.py
 

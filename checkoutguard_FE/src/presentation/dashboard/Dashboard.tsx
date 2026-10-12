@@ -19,16 +19,38 @@ import { CheckoutComposer } from './CheckoutComposer'
 import { RunHistory } from './RunHistory'
 import { BrowserEvidence } from './BrowserEvidence'
 import { LanguagePicker } from '../components/LanguagePicker'
+import { navigationSlice, sectionFromHash, type DashboardSection } from '../state/navigationSlice'
+
+const sectionLabels = {
+  overview: 'Overview',
+  'run-history': 'Run history',
+  evidence: 'Evidence',
+} as const
 
 export function Dashboard() {
   const { t, message, language, locale } = useTranslation()
   const dispatch = useAppDispatch()
+  const section = useAppSelector((state) => state.navigation.section)
   const { runs, environment, connectionError, pending, dialog } = useAppSelector(selectCheckout)
   const run = useAppSelector(selectRun),
     step = useAppSelector(selectStep),
     baseline = useAppSelector(selectBaseline)
   const active = useAppSelector(selectActive)
   const { verified, totalTools } = useAppSelector(selectMetrics)
+  useEffect(() => {
+    const syncSection = () => {
+      const next = sectionFromHash(window.location.hash)
+      dispatch(navigationSlice.actions.selectSection(next))
+      if (window.location.hash === '#' + next)
+        document.getElementById(next)?.scrollIntoView({ block: 'start' })
+    }
+    syncSection()
+    window.addEventListener('hashchange', syncSection)
+    return () => window.removeEventListener('hashchange', syncSection)
+  }, [dispatch])
+  const selectSection = (next: DashboardSection) =>
+    dispatch(navigationSlice.actions.selectSection(next))
+  const navClass = (value: DashboardSection) => 'nav-item' + (section === value ? ' current' : '')
   useEffect(() => {
     document.documentElement.lang = language
     document.title = t('CheckoutGuard · Release with evidence')
@@ -74,7 +96,12 @@ export function Dashboard() {
   return (
     <div className="shell">
       <aside className="sidebar">
-        <a href="#" className="brand" aria-label={t('CheckoutGuard home')}>
+        <a
+          href="#overview"
+          className="brand"
+          aria-label={t('CheckoutGuard home')}
+          onClick={() => selectSection('overview')}
+        >
           <img
             className="brand-mark"
             src="/brand/checkoutguard-mark.svg"
@@ -96,19 +123,35 @@ export function Dashboard() {
           <span className="chevron">⌄</span>
         </div>
         <p className="nav-label">{t('VERIFICATION')}</p>
-        <a className="nav-item current" href="#">
+        <a
+          className={navClass('overview')}
+          href="#overview"
+          aria-current={section === 'overview' ? 'location' : undefined}
+          onClick={() => selectSection('overview')}
+        >
           <Icon name="grid" />
           {t('Overview')}
-          <span className="nav-dot" />
+          {section === 'overview' && <span className="nav-dot" />}
         </a>
-        <a className="nav-item" href="#run-history">
+        <a
+          className={navClass('run-history')}
+          href="#run-history"
+          aria-current={section === 'run-history' ? 'location' : undefined}
+          onClick={() => selectSection('run-history')}
+        >
           <Icon name="layers" />
           {t('Run history')}
           <span className="count">{runs.length}</span>
         </a>
-        <a className="nav-item" href="#evidence">
+        <a
+          className={navClass('evidence')}
+          href="#evidence"
+          aria-current={section === 'evidence' ? 'location' : undefined}
+          onClick={() => selectSection('evidence')}
+        >
           <Icon name="shield" />
           {t('Evidence')}
+          {section === 'evidence' && <span className="nav-dot" />}
         </a>
         <div className="sidebar-bottom">
           <div className="partner-title">{t('BUILT WITH')}</div>
@@ -137,11 +180,11 @@ export function Dashboard() {
           </div>
         </div>
       </aside>
-      <div className="main-shell">
+      <div className="main-shell" id="overview">
         <header className="topbar">
           <div className="topbar-breadcrumb">
             {t('Checkout verification')}
-            <span>/</span> <strong>{t('Overview')}</strong>
+            <span>/</span> <strong>{t(sectionLabels[section])}</strong>
           </div>
           <div className="topbar-actions">
             <span className="environment">

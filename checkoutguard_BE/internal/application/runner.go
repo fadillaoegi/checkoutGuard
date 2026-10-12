@@ -14,7 +14,13 @@ import (
 
 func (a *Service) execute(ctx context.Context, run Run) {
 	defer a.wg.Done()
-	defer func() { a.mu.Lock(); a.activeID = ""; a.cancel = nil; a.mu.Unlock() }()
+	defer func() {
+		a.mu.Lock()
+		defer a.mu.Unlock()
+		if a.activeID == run.ID {
+			a.activeID, a.cancel = "", nil
+		}
+	}()
 	ctx, cancel := context.WithTimeout(ctx, 180*time.Second)
 	defer cancel()
 	ctx, root := a.Tracer.Workflow(ctx, "checkoutguard.checkout")
@@ -42,7 +48,7 @@ func (a *Service) execute(ctx context.Context, run Run) {
 			}
 		}
 		verifyCancel()
-		if err := a.Store.PersistFinal(&run); err != nil {
+		if err := a.persistFinal(&run); err != nil {
 			log.Print("final run persistence failed; run cannot be confirmed complete")
 		}
 		output := map[string]any{"run_id": run.ID, "environment": run.Environment, "status": run.Status, "reason": run.Reason, "findings": run.Findings, "usage": run.Usage}
@@ -95,6 +101,7 @@ func (a *Service) execute(ctx context.Context, run Run) {
 	}
 	messages := []Message{{Role: "system", Content: systemPrompt}, {Role: "user", Content: "Goal: " + run.Goal}, observationMessage(obs)}
 	placed, statusChecked, retries, modelErrors, consecutiveErrors := false, false, 0, 0, 0
+	messages = append(messages, sandboxDecisionState(run, placed, statusChecked, obs))
 	for number := 1; number <= 18; number++ {
 		if ctx.Err() != nil {
 			return
@@ -234,7 +241,7 @@ func (a *Service) execute(ctx context.Context, run Run) {
 		}
 		step.LatencyMS = time.Since(started).Milliseconds()
 		run.Steps = append(run.Steps, step)
-		if err = a.Store.Save(ctx, &run); err != nil {
+		if err = a.persistProgress(ctx, &run); err != nil {
 			run.Status = "failed"
 			run.Reason = "Cannot persist step and evidence"
 			return
@@ -257,6 +264,7 @@ func (a *Service) execute(ctx context.Context, run Run) {
 			}
 		}
 		messages = decisionMessages(messages, step, observationMessage(obs))
+		messages = append(messages, sandboxDecisionState(run, placed, statusChecked, obs))
 
 	}
 }

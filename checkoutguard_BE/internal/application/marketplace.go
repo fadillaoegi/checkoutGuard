@@ -128,7 +128,7 @@ func (a *Service) executeMarketplace(ctx context.Context, run *Run) {
 			step.Result = map[string]any{"error": step.Error}
 		}
 		run.Steps = append(run.Steps, step)
-		if err := a.Store.Save(ctx, run); err != nil {
+		if err := a.persistProgress(ctx, run); err != nil {
 			run.Status = "failed"
 			run.Reason = "Cannot persist marketplace step"
 			return

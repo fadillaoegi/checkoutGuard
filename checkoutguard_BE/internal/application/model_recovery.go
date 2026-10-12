@@ -3,6 +3,7 @@ package application
 import (
 	"context"
 	"errors"
+	"strings"
 	"time"
 
 	"checkoutguard/internal/domain"
@@ -50,8 +51,19 @@ func modelFailureResult(err error) map[string]any {
 	return result
 }
 func decisionMessages(messages []Message, step Step, observation Message) []Message {
-	if step.Action.Tool == "model_error" {
-		return append(messages, Message{Role: "user", Content: "Model decision failed; no browser action was executed. " + resultJSON(step.Result)}, observation)
+	// Keep the policy, goal and complete action/result history. Superseded page
+	// snapshots repeat large untrusted DOM text and stale actionable controls;
+	// only the latest observation belongs in the next decision request. The
+	// persisted screenshots and steps remain untouched.
+	current := make([]Message, 0, len(messages)+3)
+	for i, message := range messages {
+		if i >= 2 && message.Role == "user" && (strings.HasPrefix(message.Content, observationPrefix) || strings.HasPrefix(message.Content, verificationStatePrefix)) {
+			continue
+		}
+		current = append(current, message)
 	}
-	return append(messages, Message{Role: "assistant", Content: actionJSON(step.Action)}, Message{Role: "user", Content: "Tool result: " + resultJSON(step.Result)}, observation)
+	if step.Action.Tool == "model_error" {
+		return append(current, Message{Role: "user", Content: "Model decision failed; no browser action was executed. " + resultJSON(step.Result)}, observation)
+	}
+	return append(current, Message{Role: "assistant", Content: actionJSON(step.Action)}, Message{Role: "user", Content: "Tool result: " + resultJSON(step.Result)}, observation)
 }

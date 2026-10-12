@@ -50,6 +50,52 @@ func TestFailedDecisionHistoryContainsNoAssistantAction(t *testing.T) {
 	}
 }
 
+func TestDecisionContextReplacesOldPageButPreservesCheckoutSafetyHistory(t *testing.T) {
+	policy := Message{Role: "system", Content: systemPrompt}
+	// A user's goal must never be classified as a removable page snapshot.
+	goal := Message{Role: "user", Content: observationPrefix + "user supplied goal"}
+	messages := []Message{policy, goal, observationMessage(Observation{Text: "Old product page", Controls: []Control{{Selector: "#add"}}})}
+	steps := []Step{
+		{Action: Action{Tool: "verify_total"}, Result: map[string]any{"expected_minor": 9800, "displayed_minor": 11050, "matches": false}},
+		{Action: Action{Tool: "click", Selector: "#place"}, Result: map[string]any{"error": "payment timed out"}},
+		{Action: Action{Tool: "model_error"}, Result: modelFailureResult(&domain.PlannerError{Kind: "timeout", Message: "model response timed out", Retryable: true})},
+		{Action: Action{Tool: "order_status"}, Result: map[string]any{"count": 1, "status": "confirmed"}},
+	}
+	for i, step := range steps {
+		latest := observationMessage(Observation{Text: "Current checkout page", Controls: []Control{{Selector: "#status"}}})
+		messages = decisionMessages(messages, step, latest)
+		if messages[0] != policy || messages[1] != goal || messages[len(messages)-1] != latest {
+			t.Fatal("policy, user goal or latest observation changed")
+		}
+		observations := 0
+		for _, message := range messages[2:] {
+			if strings.HasPrefix(message.Content, observationPrefix) {
+				observations++
+			}
+			if strings.Contains(message.Content, "Old product page") {
+				t.Fatal("superseded product page retained")
+			}
+		}
+		if observations != 1 {
+			t.Fatal("exactly one current observation required")
+		}
+		for _, previous := range steps[:i+1] {
+			found := false
+			for _, message := range messages[2:] {
+				if strings.Contains(message.Content, resultJSON(previous.Result)) {
+					found = true
+				}
+			}
+			if !found {
+				t.Fatal("pricing, payment or confirmed-order result was dropped")
+			}
+		}
+	}
+	if len(messages) != 10 { // policy + goal + three action/result pairs + error + observation
+		t.Fatal("unexpected context history length", len(messages))
+	}
+}
+
 func TestPermanentProviderFailureStopsAfterOneDecisionAndPersistsEvidence(t *testing.T) {
 	repository := newRepository()
 	calls := 0

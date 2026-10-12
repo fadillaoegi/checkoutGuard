@@ -1,0 +1,105 @@
+{
+  "kind": "real-ui-review-of-verified-saved-sandbox-results",
+  "status": "verified-local-export",
+  "mode": "saved_run_review",
+  "ui_language": "en",
+  "recorded_at": "2026-10-11T20:11:11.860009Z",
+  "duration_seconds": 126.7,
+  "resolution": "1920x1080",
+  "fps": 30,
+  "audio_streams": 0,
+  "voice_over": false,
+  "captions": false,
+  "video_filename": "CheckoutGuard-demo-sandbox.mp4",
+  "local_video_path": "submission/video/CheckoutGuard-demo-sandbox.mp4",
+  "video_bytes": 7092466,
+  "video_sha256": "1a829176f92b9ea93dd52564e7c428e1db6e468b2b5a3e7241f22692ea34b519",
+  "public_video_url": null,
+  "timing": "Original review interaction timings preserved",
+  "frames_captured": 1328,
+  "step_errors": 0,
+  "new_runs_during_review": 0,
+  "new_orders_during_review": 0,
+  "full_decode_check": "passed",
+  "visual_qa": {
+    "method": "Sampled compositor frames inspected",
+    "times_seconds": [
+      5,
+      31,
+      45,
+      85,
+      119
+    ]
+  },
+  "interaction": "English UI kept; pointer hover over language picker, metrics and Sandbox choice; goal typed with seeded uneven key intervals and sentence pauses; eased smooth scrolling",
+  "chapters": [
+    {
+      "name": "intro",
+      "seconds": 0.000975167
+    },
+    {
+      "name": "goal",
+      "seconds": 10.385379459
+    },
+    {
+      "name": "baseline_review",
+      "seconds": 37.683848292
+    },
+    {
+      "name": "finding",
+      "seconds": 74.936940709
+    },
+    {
+      "name": "history",
+      "seconds": 87.106235042
+    },
+    {
+      "name": "retest_review",
+      "seconds": 95.221628
+    },
+    {
+      "name": "comparison",
+      "seconds": 116.105992584
+    },
+    {
+      "name": "outro",
+      "seconds": 122.622103709
+    }
+  ],
+  "sandbox_runs": [
+    {
+      "id": "e7af36ee-00e5-4a2b-b324-62c5025992c7",
+      "status": "findings",
+      "variant": "standard",
+      "expected_total_minor": 12400,
+      "displayed_total_minor": 14400,
+      "order_count": 1,
+      "trace_id": "8dd424fc716c6f9b45b26e659e88a85e"
+    },
+    {
+      "id": "8f007408-71ca-4817-9ea2-20d9e2b9a217",
+      "status": "passed",
+      "variant": "standard",
+      "expected_total_minor": 12400,
+      "displayed_total_minor": 12400,
+      "order_count": 1,
+      "trace_id": "7b4c0a2af252a387f7160450deff6760"
+    }
+  ],
+  "hosted_trace_readback": "not performed for these two source runs",
+  "visible_unrelated_runs": [
+    "5cb9de57-1a7d-4edf-99c9-aac7a800f8b8",
+    "55a8b1bd-6290-4fef-b722-256025570e61"
+  ],
+  "visible_unrelated_runs_note": "Live recording attempts stopped by the recorder after provider timeouts at step 1; shown as Stopped in run history",
+  "scope": "Review of verified saved sandbox results; no new checkout or inference; no Shopee/Tokopedia test; partner evidence segments still needed",
+  "raw_footage_path": "submission/video/footage/demo-english-20261012-031111",
+  "intro_video": {
+    "path": "submission/video/CheckoutGuard-intro.mp4",
+    "duration_seconds": 7.0,
+    "resolution": "1920x1080",
+    "fps": 30,
+    "audio_streams": 0,
+    "kind": "three.js 3D logo animation, rendered frame by frame"
+  }
+}

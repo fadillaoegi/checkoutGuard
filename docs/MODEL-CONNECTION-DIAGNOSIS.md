@@ -184,3 +184,85 @@ Neatlogs mempertahankan label request untuk keduanya; request timeout mencatat
 Tiga span dan kedua record diagnostik verified. Ini fixture transport tanpa
 inference provider, browser, atau order; bukan bukti performa provider dan
 tidak dipakai sebagai bukti checkout kompetisi.
+
+## Pengurangan observasi berulang — 12 Oktober 2026
+
+Pengambilan demo `f2c748e8-e7c1-4fcd-ab0f-1cf10d5bf1ce` dihentikan pada
+langkah 6 setelah model tidak memberikan header respons sampai deadline
+45 detik. Lima keputusan sebelumnya valid; input yang dilaporkan naik dari
+578 menjadi 2.078 token karena observasi halaman lama terus ditambahkan.
+Satu order sudah tersimpan saat pembatalan; tidak ada submit ulang. Status run
+akhir `stopped`. Pengambilan sebelumnya
+`61f5d52a-160e-4b1d-9175-48aa2c3fba01` juga dihentikan setelah timeout.
+Keduanya tidak diekspor sebagai video selesai.
+
+Konteks keputusan kini hanya membawa observasi halaman terbaru. Policy,
+goal asli, seluruh keputusan model valid dan hasil tool tetap dipertahankan,
+termasuk hasil total, timeout pembayaran, kegagalan model, serta konfirmasi
+pesanan. Bukti dan histori tersimpan tidak dipangkas. Perubahan berlaku pada
+loop sandbox dan marketplace melalui application layer; tidak menambah aksi
+browser otomatis, replay pembayaran, perpindahan model, atau retry tersembunyi.
+
+Tes race application/model/architecture dan go vet terkait lulus. Tes konteks
+memastikan kontrol halaman lama dibuang tanpa kehilangan hasil pembayaran
+atau order confirmed, dan kegagalan planner tidak menjadi aksi assistant.
+Probe inference memakai observasi awal checkout berhasil: DNS/TCP/TLS dan
+request terkirim sekitar 144 ms, byte respons pertama 11.271 ms, selesai
+11.273 ms, 595 input + 35 output token, respons berlabel SEA-LION. Ini probe
+sebelum pengujian loop baru, tanpa browser/order; tidak membuktikan provider
+stabil atau observasi berulang menjadi akar penyebab timeout. Default timeout
+45 detik serta batas recovery tetap berlaku. Rekaman baru tetap dihentikan pada
+step error dan tidak mengulang run secara otomatis.
+
+Pengambilan dengan backend baru `16be73cc-ff9e-4e77-904d-3b8822837652`
+timeout pada keputusan pertama, `http_response_received=false`,
+`returned_model_known=false`, `error_kind=timeout`, `timeout_ms=45000`.
+Recorder membatalkannya: status akhir `stopped`, nol order, tidak ada run aktif
+saat pemeriksaan. Encoder menolak manifest yang dihentikan. Karena request
+awal belum memuat observasi lama, hasil ini tidak mendukung kesimpulan bahwa
+pengulangan konteks adalah penyebab tunggal timeout. Perbaikan konteks tetap
+berguna untuk mengurangi input berikutnya, tetapi provider belum stabil dan
+pada tahap tersebut video pengganti tanpa suara belum selesai.
+
+## Keandalan model 8B dan kesiapan retest — 12 Oktober 2026
+
+Profil lokal kini meminta `swiss-ai/apertus-v1.5-8b` dari Public AI yang sama.
+Tiga probe JSON-object dan satu checkout fixed lengkap berhasil; label request
+dan respons cocok. Checkout fixed `2d805a13-1a9d-41d4-9291-9171f112dd0d`
+passed dengan satu order, satu submit dan tanpa step error. Hosted readback
+trace `3c38f6ce4e6101596b4f85183a6a3311` memverifikasi 17 span dan 7.493 token.
+Ini hasil pengujian terbatas, bukan bukti provider selalu stabil.
+
+Uji berikutnya menemukan keputusan yang ditolak guard: ringkasan lebih dari
+300 byte, finish sebelum konfirmasi order setelah submit, serta verify_total
+sebelum rincian checkout terlihat. Prompt sekarang meminta ringkasan pendek
+dan menerima state verifikasi serta daftar tool yang tersedia berdasarkan
+observasi nyata. Guard, keputusan model dan histori bukti tetap berlaku;
+aplikasi tidak mengarang aksi atau menjalankan pembayaran otomatis sebagai
+fallback. Eksperimen response_format JSON schema tidak dipakai pada adapter
+akhir karena menghasilkan keputusan finish terlalu dini.
+
+Ada masalah aplikasi terpisah: retest dapat menerima HTTP 409 setelah status
+run tampak selesai tetapi browser sebelumnya belum ditutup. Status progress
+kini tetap running sampai browser selesai ditutup; penyimpanan final dan
+pelepasan slot run dilakukan di bawah lock admission. Ekspor telemetry lama
+tidak menahan slot browser baru. Tes race memverifikasi kasus browser close
+dan trace export yang sengaja diblokir, termasuk perlindungan cleanup run lama.
+
+Uji setelah perbaikan masih menerima HTTP 502 pada request model. Kegagalan
+ini menunjukkan respons error dari gateway, bukan bukti jaringan pengguna
+bermasalah atau bobot model tertentu menjadi penyebabnya. Perbaikan prompt
+dan lifecycle tidak menyelesaikan ketersediaan upstream. Setiap pengambilan
+yang gagal dihentikan dan tidak diekspor sebagai demo lengkap.
+
+Untuk menyediakan video tanpa suara, recorder kini juga dapat mereview dua
+hasil sandbox tersimpan yang memang sudah terverifikasi. Mode
+`saved_run_review` membaca run dan order, menghalangi submit form, dan tidak
+membuat checkout atau inference baru. Metadata ekspor membedakan review ini
+dari eksekusi live. [Status video](../submission/DEMO-SCRIPT.md).
+
+Ekspor review akhirnya selesai pada direktori `tmp/video/20261012-023423`:
+156,53 detik, 1080p/30 fps, nol audio stream, dekode seluruh video lulus.
+Tidak ada run atau order baru selama rekaman. Kedua trace sumber historis
+dibaca kembali dari neatlogs dan token cocok dengan backend; verifikasi ini
+tidak mengubah kesimpulan mengenai ketersediaan gateway pada request baru.

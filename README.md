@@ -102,8 +102,11 @@ artifacts are available separately in `submission/evidence/`.
 
 ## Model reliability and scope
 
-Current runtime requests select `swiss-ai/apertus-v1.5-70b` through Public AI,
-but successful responses have been labelled `aisingapore/Qwen-SEA-LION-v4-32B-IT`.
+The local demo profile and example select `swiss-ai/apertus-v1.5-8b` through
+Public AI, using JSON-object responses and short action summaries. The previous
+70B profile remains supported; historical requests for
+`swiss-ai/apertus-v1.5-70b` received successful responses labelled
+`aisingapore/Qwen-SEA-LION-v4-32B-IT`.
 New LLM spans keep the requested model as their label and record the response
 label separately in persisted `step.usage.model_call` diagnostics. Workflow
 output carries the same records, correlated by span ID for hosted readback.
@@ -119,6 +122,12 @@ have a default 45-second deadline (`MODEL_REQUEST_TIMEOUT_SECONDS`, 10–60).
 Transient failures use bounded retries and Retry-After; permanent errors stop.
 Planning retries never replay browser actions. Sandbox submit retry requires a
 prior order-status check and is forbidden once an order is confirmed.
+Each decision includes the latest browser observation, with the original goal
+and complete action/result history. Superseded page snapshots are removed from
+later requests; persisted steps and screenshots are retained.
+Terminal status is published after browser cleanup, with run admission released
+alongside final persistence. Trace export does not block the next checkout or
+retest after the completed result becomes visible.
 
 Shopee/Tokopedia are **experimental checkout preparation** adapters. Open the
 dedicated browser and log in manually, then supply a full HTTPS product URL.
@@ -209,13 +218,25 @@ checkout or model-provider reliability. See [evaluation](docs/EVALUATION.md).
 ## neatHack status
 
 neatlogs integration and runtime readback are proven. Entire capture prerequisites
-pass; feature-checkpoint contents and reviewer access still need verification.
-The user has published the implementation and hosted CI passes for `0e21026`.
+pass. The public Entire checkpoint `01M4NKBNCP60MN7M5BXS143W16` links to
+`a134e4a`; its metadata matches all 35 changed files and transcript blobs are
+accessible. Selected decisions, patches and original tool outputs were inspected;
+seven source files match published commit blobs. See
+[checkpoint verification](submission/evidence/entire-checkpoint.json).
+For the demo, follow the [Entire context review](submission/ENTIRE-REVIEW.md).
+The user has published the implementation and
+[hosted CI passes for `a134e4a`](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603):
+backend, frontend and publication all succeeded. Later local runway/context
+review changes still await user publication.
 Actual [cfo.ai business-plan exports](submission/CFO-RESULTS.md) are included:
 pricing, cost assumptions, three revenue scenarios and a runway method.
 Numerical cash runway awaits actual dated cash inputs. Demo video and publication
 links remain pending; the latest local changes await user publication.
 This repository preparation is not a completed submission.
+
+[Runway inputs and local calculator](submission/RUNWAY-INPUTS.md) ·
+[cfo.ai revision prompt](submission/CFO-RUNWAY-FOLLOWUP.md).
+Missing cash inputs stay unavailable; financial results remain in ignored `tmp`.
 
 [Submission checklist](submission/SUBMISSION-CHECKLIST.md) ·
 [Demo script](submission/DEMO-SCRIPT.md) ·

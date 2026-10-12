@@ -1,0 +1,121 @@
+{
+  "kind": "real-ui-review-of-verified-saved-sandbox-results",
+  "status": "verified-local-export",
+  "mode": "saved_run_review",
+  "recorded_at": "2026-10-11T19:34:23.003899Z",
+  "duration_seconds": 156.533333,
+  "resolution": "1920x1080",
+  "fps": 30,
+  "audio_streams": 0,
+  "voice_over": false,
+  "captions": false,
+  "video_filename": "CheckoutGuard-sandbox-review-silent.mp4",
+  "local_video_path": "tmp/video/20261012-023423/CheckoutGuard-sandbox-review-silent.mp4",
+  "video_bytes": 8860294,
+  "video_sha256": "976ee666e5b164075c92743e7b790b9afb0dd833e41192faccf64e4863bcb28d",
+  "public_video_url": null,
+  "timing": "Original review interaction timings preserved",
+  "frames_captured": 1061,
+  "step_errors": 0,
+  "new_runs_during_review": 0,
+  "new_orders_during_review": 0,
+  "full_decode_check": "passed",
+  "visual_qa": {
+    "method": "Seven sampled frames extracted from final MP4 and inspected",
+    "times_seconds": [
+      2,
+      22,
+      67,
+      100,
+      136,
+      148,
+      155
+    ]
+  },
+  "export_guard_checks": [
+    "stopped recording refused",
+    "source step error refused",
+    "unknown recording mode refused"
+  ],
+  "chapters": [
+    {
+      "name": "intro",
+      "seconds": 0.002903292
+    },
+    {
+      "name": "goal",
+      "seconds": 10.552525375
+    },
+    {
+      "name": "baseline_review",
+      "seconds": 45.138398959
+    },
+    {
+      "name": "finding",
+      "seconds": 91.014428542
+    },
+    {
+      "name": "history",
+      "seconds": 105.59857825
+    },
+    {
+      "name": "retest_review",
+      "seconds": 117.368274834
+    },
+    {
+      "name": "comparison",
+      "seconds": 144.637482917
+    },
+    {
+      "name": "outro",
+      "seconds": 152.499866875
+    }
+  ],
+  "runs": [
+    {
+      "id": "7efb48b0-250a-4907-9c6f-718342588a55",
+      "parent_id": null,
+      "environment": "sandbox",
+      "scenario": "total_bug",
+      "variant": "alternate",
+      "status": "findings",
+      "total_verified": true,
+      "expected_total_minor": 9800,
+      "displayed_total_minor": 11050,
+      "order_count": 1,
+      "trace_id": "4102ea1e8e143672a7e41c813b14418a",
+      "started_at": "2026-10-11T14:58:43.574655Z",
+      "finished_at": "2026-10-11T14:59:15.2917Z",
+      "steps": 8,
+      "submit_count": 1
+    },
+    {
+      "id": "6d374209-36ea-4a39-9c96-38f49b0fa3e8",
+      "parent_id": "7efb48b0-250a-4907-9c6f-718342588a55",
+      "environment": "sandbox",
+      "scenario": "fixed",
+      "variant": "alternate",
+      "status": "passed",
+      "total_verified": true,
+      "expected_total_minor": 9800,
+      "displayed_total_minor": 9800,
+      "order_count": 1,
+      "trace_id": "aedd5ac65bb1a9895f7e2d894893af98",
+      "started_at": "2026-10-11T14:59:31.684491Z",
+      "finished_at": "2026-10-11T14:59:51.510022Z",
+      "steps": 8,
+      "submit_count": 1
+    }
+  ],
+  "hosted_source_traces_verified": true,
+  "trace_evidence": "sandbox-video-traces.json",
+  "superseded_narrated_draft_sha256": "c953793cd252d9a27d57cb7129551d0a370c586c63f544f210d8fc645e57c74f",
+  "limitations": [
+    "Review of historical verified results, not a fresh checkout or inference execution.",
+    "Sandbox segment only; the complete competition video still needs partner evidence segments.",
+    "No Shopee or Tokopedia test was started.",
+    "Live gateway timeouts and HTTP 502 are not resolved by this video.",
+    "Local export has not been uploaded or submitted.",
+    "Full video decoded; visual QA sampled frames, not a frame-by-frame watch."
+  ]
+}

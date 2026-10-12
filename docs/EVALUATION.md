@@ -519,3 +519,36 @@ check tambahan lulus, sehingga total enam tes batas publikasi lulus.
 CI memasukkan pemeriksaan model CFO; hosted CI terbaru untuk perubahan ini
 tetap menunggu publikasi user. Tidak ada perubahan billing/akun, operasi Git,
 atau pesanan marketplace.
+
+## Review konteks Entire dan persiapan cash runway — 11 Oktober 2026
+
+Checkpoint 01M4NKBNCP60MN7M5BXS143W16 ditinjau melalui blob publik GitHub,
+tanpa operasi Git. Digest blob transkrip ringkas dan arsip asli cocok dengan
+tree remote. Record struktur diparse: 639 record ringkas dan 5.537 record asli.
+Lima pasangan patch/perubahan dan output terkait ditinjau; tujuh source file
+cocok byte-for-byte dengan blob commit a134e4a. Keputusan pemisahan model
+tercatat pada record 513, diikuti patch penghapusan relabeling pada record 519.
+Transkrip ringkas mengosongkan output tool; output asli diperiksa terpisah.
+Ringkasan aman ada di ENTIRE-REVIEW.md dan entire-context-review.json. Arsip
+mentah menyimpan metadata akun/path lokal, sehingga tidak disalin ke evidence
+publik dan tidak boleh ditampilkan tanpa menyembunyikan identitas saat demo.
+
+Kalkulator cash runway lokal memakai saldo bertanggal, mata uang, buffer kas,
+penerimaan dan pembayaran eksplisit. Semua input contoh kosong; saat dijalankan
+menghasilkan needs_input, bukan asumsi saldo nol. Perhitungan memakai cash
+rollforward bulanan konstan, tanpa pembiayaan masa depan; hasil privat di tmp.
+Tujuh tes batas lulus untuk saldo nol, input kosong, burn nol/negatif, pembayaran,
+crossing buffer dan tanggal ulang bulan. Model bukan hasil baru dari cfo.ai;
+prompt tindak lanjut dan kebutuhan input disiapkan di RUNWAY-INPUTS.md.
+Cash runway numerik dan ekspor revisi cfo.ai masih menunggu data user. Original
+PDF/XLSX tetap utuh dan review model 409 perbandingan masih lulus.
+
+## CI untuk perubahan diagnostik dan ekspor CFO
+
+Pembacaan API GitHub tanpa autentikasi mengonfirmasi
+[run 38144551603](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603)
+pada commit a134e4a selesai dengan success. Backend, frontend dan publication
+semuanya success; termasuk review model CFO dan tes reader diagnostik aman.
+[Readback](../submission/evidence/ci-a134e4a.json) tidak memuat log privat atau
+credential. Perubahan kalkulator runway dan review konteks sesudah commit itu
+belum dijalankan hosted CI. Tidak ada operasi Git.

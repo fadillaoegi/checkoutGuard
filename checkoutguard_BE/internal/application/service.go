@@ -42,6 +42,25 @@ var ErrInternal = errors.New("operation failed")
 func (a *Service) Health(ctx context.Context) (ModelInfo, error) {
 	return a.Planner.Info(), a.Store.Ping(ctx)
 }
+
+// Publish terminal state only after browser cleanup. Holding admission across
+// final persistence prevents a caller observing "finished" and then ErrBusy.
+// Trace export can finish independently without occupying the browser slot.
+func (a *Service) persistFinal(run *Run) error {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	err := a.Store.PersistFinal(run)
+	if a.activeID == run.ID {
+		a.activeID, a.cancel = "", nil
+	}
+	return err
+}
+
+func (a *Service) persistProgress(ctx context.Context, run *Run) error {
+	progress := *run
+	progress.Status, progress.Reason, progress.Finished = "running", "", nil
+	return a.Store.Save(ctx, &progress)
+}
 func (a *Service) List(ctx context.Context) ([]Run, error) { return a.Store.List(ctx) }
 func (a *Service) Get(ctx context.Context, id string) (Run, error) {
 	r, err := a.Store.Get(ctx, id)

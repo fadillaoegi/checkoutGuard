@@ -64,6 +64,10 @@ Puncak defisit operasional kumulatif base sekitar **US$59.175** bukan saldo kas,
 runway atau kebutuhan pendanaan terverifikasi. Untuk menambahkan runway numerik,
 berikan data kas tersebut ke cfo.ai dan simpan hasil revisi asli.
 
+[Input dan kalkulator runway](RUNWAY-INPUTS.md) serta
+[prompt revisi untuk cfo.ai](CFO-RUNWAY-FOLLOWUP.md) sudah disiapkan. Status
+tetap menunggu input kas user; tidak ada angka saldo yang diisi otomatis.
+
 cfo.ai menerima angka runtime yang ditempel ke prompt; `EVIDENCE.md` belum
 dilampirkan di sesi tersebut. Pemeriksaan lokal berikut mencocokkan tiga baris
 workbook dengan [run sintetis yang sudah dikurasi](evidence/runs.json), tanpa

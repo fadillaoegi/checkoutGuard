@@ -4,6 +4,22 @@ Status: konfigurasi dan alat uji siap, tetapi provider alternatif **belum diuji
 atau diaktifkan**. Saat pemeriksaan, key LiteLLM/provider cadangan belum ditemukan
 di konfigurasi proyek dan environment. Public AI masih menjadi provider aktif.
 
+Pada 12 Oktober, profil demo lokal beralih ke **model** Apertus v1.5 8B pada
+Public AI yang sama; ini bukan aktivasi provider cadangan. Key yang sudah ada
+digunakan dalam `.env.model.local` berizin 600 dan diabaikan Git. Konfigurasi
+70B di direktori induk tetap tersedia. Tiga probe JSON-object dan satu checkout
+fixed lengkap berhasil tanpa model error; request/response label 8B cocok.
+Pengujian berikutnya tetap menemukan ringkasan action terlalu panjang,
+pemilihan tool sebelum tersedia, serta HTTP 502 dari gateway. Jadi model 8B
+**belum cukup andal untuk menjamin demo checkout live**. State verifikasi dan
+daftar tool yang tersedia kini ikut diberikan pada model; guard tetap menolak
+aksi yang tidak sah. Perubahan ini tidak menjamin gateway menjadi stabil.
+Uji schema JSON tambahan tidak dipilih untuk demo karena menghasilkan keputusan
+finish terlalu dini yang ditolak guard. Adapter akhir tetap JSON-object dan
+tidak melakukan fallback tersembunyi. Ringkasan keputusan kini diminta maksimum
+100 karakter dengan validasi action yang tetap berlaku. Hasil video dan retest
+terbaru dicatat di [skrip demo](../submission/DEMO-SCRIPT.md).
+
 ## Akses yang diperlukan
 
 Acara menyediakan akses LiteLLM untuk Nova/Claude, dengan budget bersama $20 per

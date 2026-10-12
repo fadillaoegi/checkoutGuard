@@ -1,0 +1,141 @@
+{
+  "review_date": "2026-10-11",
+  "checkpoint_id": "01M4NKBNCP60MN7M5BXS143W16",
+  "implementation_commit": "a134e4ac6383444081bc5ff73c3b6ea3bdb302ec",
+  "source": "Public checkpoint blobs downloaded through unauthenticated GitHub HTTPS; no Git commands",
+  "compact_transcript": {
+    "blob": "81796450373131888b6d16b679ac9a32b690fadb",
+    "sha256": "888345a7bc7e382da26879de261a03242a96775d926bb018d493d5f9f7afc57f",
+    "bytes": 1441038,
+    "records": 639,
+    "user_records": 53,
+    "assistant_records": 586,
+    "tool_calls": 548,
+    "git_blob_digest_verified": true
+  },
+  "original_transcript": {
+    "blob": "1b3ccd63c111d53cc6e206de1e40c8e8e3b11dd8",
+    "sha256": "866626fae0816024d5c9421b9bd226183c2fae74ceab7a0ff343739ef2112d80",
+    "bytes": 30729157,
+    "records": 5537,
+    "git_blob_digest_verified": true
+  },
+  "decision_excerpt": {
+    "compact_record_one_based": 513,
+    "timestamp_utc": "2026-10-11T11:31:48.168Z",
+    "role": "assistant",
+    "text": "Saya perbaiki pencatatan trace agar model yang diminta dan label model dari respons tersimpan terpisah. Saya juga tambahkan batas timeout dan jenis error supaya investigasi neatlogs tidak lagi bergantung pada nama span saja."
+  },
+  "reviewed_change_and_output_records": [
+    {
+      "summary": "Remove response-based relabeling and add per-call diagnostics",
+      "compact_record_one_based": 519,
+      "timestamp_utc": "2026-10-11T11:35:19.593Z",
+      "call_id": "call_hvQJgeJrWoUFMe351aytiQB6",
+      "call_recorded": true,
+      "original_output_record_found": true,
+      "recorded_exit_codes": [
+        0
+      ]
+    },
+    {
+      "summary": "Adapter span metadata refinement",
+      "compact_record_one_based": 563,
+      "timestamp_utc": "2026-10-11T12:27:10.879Z",
+      "call_id": "call_pSye6zrn1qQ5lNMEe3151KHF",
+      "call_recorded": true,
+      "original_output_record_found": true,
+      "recorded_exit_codes": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "summary": "Raw provider span implementation refinement",
+      "compact_record_one_based": 571,
+      "timestamp_utc": "2026-10-11T12:30:56.887Z",
+      "call_id": "call_ja4szFY7IpKsfTc7JaknJU1v",
+      "call_recorded": true,
+      "original_output_record_found": true,
+      "recorded_exit_codes": [
+        0,
+        0
+      ]
+    },
+    {
+      "summary": "Model test output after diagnostics changes",
+      "compact_record_one_based": 600,
+      "timestamp_utc": "2026-10-11T12:52:10.618Z",
+      "call_id": "call_10aef9347abd47fd9fc979597f2cffc5",
+      "call_recorded": true,
+      "original_output_record_found": true,
+      "recorded_exit_codes": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "summary": "Add and execute independent cfo.ai model review",
+      "compact_record_one_based": 624,
+      "timestamp_utc": "2026-10-11T13:19:42.889Z",
+      "call_id": "call_dd4d7d9bf3a9463aa802393638ece64a",
+      "call_recorded": true,
+      "original_output_record_found": true,
+      "recorded_exit_codes": [
+        0
+      ]
+    }
+  ],
+  "published_file_checks": [
+    {
+      "path": "checkoutguard_BE/internal/adapters/model/model.go",
+      "published_blob": "6016885e8ab3121120422562fbfcefda5a318d6e",
+      "local_bytes_match_published_commit": true
+    },
+    {
+      "path": "checkoutguard_BE/internal/adapters/model/tracing.go",
+      "published_blob": "c2c66d4c1b58ce163f78e8066e6317777e87c772",
+      "local_bytes_match_published_commit": true
+    },
+    {
+      "path": "checkoutguard_BE/internal/adapters/model/tracing_test.go",
+      "published_blob": "da2348b582642160e86d3113091227fd86c49d18",
+      "local_bytes_match_published_commit": true
+    },
+    {
+      "path": "checkoutguard_BE/internal/adapters/telemetry/tracer.go",
+      "published_blob": "ee251e334f77a883f1ca4d7ecd7d3e4ef8e7e08c",
+      "local_bytes_match_published_commit": true
+    },
+    {
+      "path": "checkoutguard_BE/internal/application/runner.go",
+      "published_blob": "bf02918c85c8c4f138c59b38af9225312a06bf1d",
+      "local_bytes_match_published_commit": true
+    },
+    {
+      "path": "checkoutguard_BE/internal/domain/model_call.go",
+      "published_blob": "3a9ab603574fe734c1ce4a91c86d4b93db289921",
+      "local_bytes_match_published_commit": true
+    },
+    {
+      "path": "scripts/review-cfo-model.py",
+      "published_blob": "a0a6b68afbc81a9a745fbdad8de548c484d45f2a",
+      "local_bytes_match_published_commit": true
+    }
+  ],
+  "privacy_review": {
+    "known_secret_and_high_confidence_credential_matches": 0,
+    "raw_transcripts_copied_into_public_evidence": false,
+    "raw_transcript_has_session_account_metadata_and_local_paths": true,
+    "scope": "Credential-pattern scan plus safe excerpt review; not an exhaustive privacy review of every image, sentence or identifier."
+  },
+  "limits": [
+    "All record structures parsed; selected decisions, patches and tool outputs inspected, not every conversation sentence or embedded image.",
+    "Compact transcript stores empty tool-output fields; selected original output records were checked separately.",
+    "Checkpoint attribution percentages are tool bookkeeping, not independent proof of human versus AI authorship.",
+    "A local review does not prove every earlier implementation turn appears in this checkpoint."
+  ],
+  "git_commands_executed": false
+}

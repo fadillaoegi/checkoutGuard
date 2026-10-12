@@ -1,0 +1,51 @@
+{
+  "checked_date": "2026-10-11",
+  "verification_method": "Unauthenticated read-only GitHub HTTPS API; local checkpoint ref file read directly; no Git commands",
+  "implementation_commit": "a134e4ac6383444081bc5ff73c3b6ea3bdb302ec",
+  "commit_url": "https://github.com/fadillaoegi/checkoutGuard/commit/a134e4ac6383444081bc5ff73c3b6ea3bdb302ec",
+  "checkpoint_id": "01M4NKBNCP60MN7M5BXS143W16",
+  "checkpoint_ref": "refs/entire/checkpoints/16/01M4NKBNCP60MN7M5BXS143W16",
+  "checkpoint_object": "bef8f90aab69269462123a995948e574b08f6acc",
+  "remote_ref_matches_local": true,
+  "commit_trailer_matches_checkpoint_metadata": true,
+  "agent": "Codex",
+  "strategy": "manual-commit",
+  "files_touched_count": 35,
+  "checkpoint_files_match_commit_files": true,
+  "files_available": [
+    {
+      "path": "0/content_hash.txt",
+      "bytes": 71
+    },
+    {
+      "path": "0/full.jsonl",
+      "bytes": 30729157
+    },
+    {
+      "path": "0/metadata.json",
+      "bytes": 5873
+    },
+    {
+      "path": "0/prompt.txt",
+      "bytes": 4903
+    },
+    {
+      "path": "0/transcript.jsonl",
+      "bytes": 1441038
+    },
+    {
+      "path": "metadata.json",
+      "bytes": 2227
+    }
+  ],
+  "public_metadata_url": "https://github.com/fadillaoegi/checkoutGuard/blob/bef8f90aab69269462123a995948e574b08f6acc/metadata.json",
+  "limits": [
+    "Transcript record structures and selected decisions, patches and original tool outputs reviewed; raw transcripts not copied into public evidence.",
+    "Does not assert that every earlier implementation turn is included in this checkpoint.",
+    "New source commit CI status is not established by this checkpoint verification."
+  ],
+  "raw_prompts_or_transcripts_included": false,
+  "git_commands_executed": false,
+  "context_review": "entire-context-review.json",
+  "selected_context_and_original_tool_outputs_reviewed": true
+}

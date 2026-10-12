@@ -325,13 +325,29 @@ Doctor local/hosted lulus. Rilis SDK `v0.1.12` masih mendefinisikan runtime
 `Version = "0.1.9"`; ketidaksesuaian metadata upstream ini dicatat, tidak diubah.
 
 Capture Entire aktif. Commit anchor kosong `34b821f` serta remote/upstream main
-dibuat hanya atas izin khusus user. Commit/push fitur berikutnya dikelola user;
-checkpoint fitur yang dipublikasikan dan link reviewer masih perlu diverifikasi.
+dibuat hanya atas izin khusus user. Commit/push fitur berikutnya dikelola user.
+
+Pemeriksaan terbaru mengonfirmasi checkpoint `01M4NKBNCP60MN7M5BXS143W16`
+terhubung ke commit publik `a134e4a`. Metadata menunjukkan Codex dan 35 file
+yang sama dengan commit; blob transkrip bisa dibaca melalui API publik.
+[Bukti verifikasi](submission/evidence/entire-checkpoint.json). Keputusan, patch
+dan output tool tertentu sudah ditinjau pada arsip asli; tujuh file cocok dengan
+blob commit publik. [Panduan demo Entire](submission/ENTIRE-REVIEW.md).
 
 cfo.ai sudah menghasilkan [rencana bisnis dan model Excel asli](submission/CFO-RESULTS.md).
 Pemeriksaan independen cocok untuk 75 periode proyeksi dan 5 sensitivitas.
 Tautan **cfo.ai → Rencana bisnis** di dashboard membuka PDF. Harga, biaya dan
 proyeksi pelanggan tetap berupa asumsi; metode runway tersedia, tetapi angka
 runway memerlukan saldo kas serta cash flow aktual. Video, building in public,
-verifikasi isi checkpoint Entire dan submission masih perlu diselesaikan.
+penampilan konteks nyata checkpoint Entire dalam demo dan submission masih
+perlu diselesaikan.
 Perubahan lokal terbaru menunggu publikasi oleh user.
+
+[CI commit `a134e4a`](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603)
+terverifikasi berhasil untuk backend, frontend dan publication. Perubahan
+runway/review konteks yang dibuat sesudah commit tersebut belum diuji CI hosted.
+
+[Template dan kalkulator runway](submission/RUNWAY-INPUTS.md) serta
+[prompt tindak lanjut cfo.ai](submission/CFO-RUNWAY-FOLLOWUP.md) sudah tersedia.
+Input kas masih kosong; angka runway belum dihitung. Data serta hasil keuangan
+privat tetap di `tmp/` dan tidak otomatis dipublikasikan.

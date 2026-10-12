@@ -14,6 +14,38 @@ The pricing calculation is **8,750 − 1,250 + 2,300 = 9,800 IDR**. The defectiv
 fixture displays 11,050 IDR. Retest keeps the same goal and basket and selects
 the corrected fixture; the agent does not edit a merchant's source code.
 
+## Silent sandbox review video
+
+On 11 October, two new live sandbox runs were recorded: pricing defect
+`7efb48b0-250a-4907-9c6f-718342588a55`, then its corrected retest
+`6d374209-36ea-4a39-9c96-38f49b0fa3e8`. Both completed with zero step errors,
+verified totals and exactly one saved order. The first narrated draft was
+superseded at the user's request; those executions remain historical evidence.
+
+On 12 October, a **review of these saved results** was recorded through the real
+dashboard. The new MP4 is 156.53 seconds, 1920 × 1080, H.264 at 30 fps, with zero
+audio streams, no voice-over and no captions. It includes typing, language
+switching, active sidebar navigation, step screenshots, the finding modal,
+history selection, retest tool output and before/after comparison. Original
+review interaction timings are preserved. The recorder blocked form submit;
+run IDs and order totals were unchanged before/after recording. It did not
+execute a fresh checkout or inference request. Full-video decoding and seven
+sample-frame inspections passed. [Manifest and checksum](evidence/sandbox-video.json)
+· [Recording instructions](DEMO-SCRIPT.md).
+
+Previous failed live takes and stopped review takes remain private historical
+records and were refused by the encoder. Gateway timeouts and a later HTTP 502
+remain unresolved upstream reliability concerns; this review is not evidence
+that live model reliability has been fixed.
+[Diagnosis](../docs/MODEL-CONNECTION-DIAGNOSIS.md).
+
+This is the sandbox segment, not the complete competition video. It has not
+been uploaded or submitted. No marketplace test was started. Hosted readback
+for both source traces now verifies 15 spans, seven LLM calls per trace, valid
+hierarchy, no duplicates and matching local token totals (12,804 / 12,589).
+[Readback summaries](evidence/sandbox-video-traces.json). The earlier verified
+partner evidence below is unchanged.
+
 ## Browser evidence
 
 The exported PNGs are byte-for-byte copies of final browser evidence. All
@@ -118,9 +150,19 @@ database. Evidence and safe summaries above remain inspectable without the DB.
 ## Competition status
 
 Runtime evidence is ready. The user has published the implementation and the
-existing hosted CI passes. Entire feature-checkpoint contents/access still
-require verification. The model diagnostics update requires user publication
-before its new CI checks can be verified on GitHub.
+existing hosted CI passes for `0e21026`. User has now published model diagnostics
+and cfo.ai artifacts in `a134e4a`; its
+[hosted CI](https://github.com/fadillaoegi/checkoutGuard/actions/runs/38144551603)
+is verified completed/success for backend, frontend and publication.
+[Safe CI readback](evidence/ci-a134e4a.json). Later local changes await publication.
+The Entire trailer points to `01M4NKBNCP60MN7M5BXS143W16`; its remote ref matches
+local storage, public metadata identifies Codex and the same 35 changed files,
+and transcript blobs are available through the unauthenticated GitHub API.
+[Checkpoint verification](evidence/entire-checkpoint.json). Selected decisions,
+patches and original tool outputs were subsequently inspected; seven source
+files match published commit blobs. [Context review](ENTIRE-REVIEW.md) includes
+safe source record references for the demo. Not every sentence or embedded image
+was individually reviewed.
 Original cfo.ai PDF/XLSX/Markdown exports are now included; see
 [CFO-RESULTS.md](CFO-RESULTS.md) and [provenance](business/artifact-provenance.json).
 The three supplied runtime observations match this file's curated run records.
@@ -130,5 +172,7 @@ all seven PDF pages. Original cfo.ai outputs are preserved byte-for-byte;
 cfo.ai did not receive EVIDENCE.md, so this local comparison is a separate check.
 Runway method is included; numerical cash runway requires actual dated cash
 inputs. All pricing, customer and financial projections remain assumptions.
+The [runway calculator/template and cfo.ai follow-up](RUNWAY-INPUTS.md) are ready;
+they do not replace the missing cash inputs or a revised actual cfo.ai export.
 Demo video, building-in-public links and the official X quote submission remain
 pending. See [SUBMISSION-CHECKLIST.md](SUBMISSION-CHECKLIST.md).

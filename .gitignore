@@ -44,3 +44,18 @@ checkoutguard_BE/bin/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Videos, voice-over and raw footage (≈1 GB): kept locally, shared via the uploaded video link
+submission/video/
+*.mp4
+*.mov
+*.webm
+*.mp3
+*.wav
+*.flac
+
+# Editor / OS clutter
+.vscode/
+.idea/
+*.swp
+Thumbs.db

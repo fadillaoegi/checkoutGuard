@@ -1,0 +1,17 @@
+{
+  "cash_basis": null,
+  "cash_as_of": null,
+  "currency": null,
+  "unrestricted_cash": null,
+  "minimum_cash_buffer": null,
+  "monthly_cash_receipts": null,
+  "monthly_cash_payments": {
+    "operating": null,
+    "founder": null,
+    "tax": null,
+    "capex": null,
+    "debt_service": null,
+    "refunds": null
+  },
+  "no_future_financing_assumed": null
+}
