@@ -1,0 +1,198 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4QT4X150GY48ZH3JHJ41AY3",
+  "session_id": "01a12502-5a82-71e1-941c-d73f13563255",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-12T10:23:10.611579Z",
+  "branch": "main",
+  "checkpoints_count": 6,
+  "save_step_count": 6,
+  "files_touched": [
+    ".github/workflows/ci.yml",
+    "README-ID.md",
+    "README.md",
+    "checkoutguard_BE/cmd/demorecord/capture.go",
+    "checkoutguard_BE/cmd/demorecord/main.go",
+    "checkoutguard_BE/internal/application/completion_test.go",
+    "checkoutguard_BE/internal/application/decision_state_test.go",
+    "checkoutguard_BE/internal/application/marketplace.go",
+    "checkoutguard_BE/internal/application/model_recovery.go",
+    "checkoutguard_BE/internal/application/model_recovery_test.go",
+    "checkoutguard_BE/internal/application/prompts.go",
+    "checkoutguard_BE/internal/application/runner.go",
+    "checkoutguard_BE/internal/application/service.go",
+    "checkoutguard_FE/src/presentation/dashboard/Dashboard.tsx",
+    "checkoutguard_FE/src/presentation/state/navigationSlice.ts",
+    "checkoutguard_FE/src/presentation/state/store.ts",
+    "checkoutguard_FE/src/presentation/style.css",
+    "docs/ENTIRE-CAPTURE-NEXT.md",
+    "docs/EVALUATION.md",
+    "docs/MODEL-CONNECTION-DIAGNOSIS.md",
+    "docs/PROVIDER-CANDIDATE.md",
+    "docs/examples/publicai-model.env.example",
+    "docs/examples/publicai-pricing.env.example",
+    "docs/examples/runway-input.json.example",
+    "scripts/calculate-runway.py",
+    "scripts/render-sandbox-demo.py",
+    "scripts/test-runway.py",
+    "submission/CFO-RESULTS.md",
+    "submission/CFO-RUNWAY-FOLLOWUP.md",
+    "submission/DEMO-SCRIPT.md",
+    "submission/ENTIRE-REVIEW.md",
+    "submission/EVIDENCE.md",
+    "submission/RUNWAY-INPUTS.md",
+    "submission/SUBMISSION-CHECKLIST.md",
+    "submission/evidence/ci-a134e4a.json",
+    "submission/evidence/entire-checkpoint.json",
+    "submission/evidence/entire-context-review.json",
+    "submission/evidence/sandbox-video.json"
+  ],
+  "agent": "Codex",
+  "model": "gpt-6.1-sol",
+  "turn_id": "f140a345714d",
+  "checkpoint_transcript_start": 5537,
+  "transcript_lines_at_start": 5537,
+  "compact_transcript_start": 639,
+  "token_usage": {
+    "input_tokens": 638201,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 33508736,
+    "output_tokens": 177429,
+    "api_call_count": 275,
+    "subagent_tokens_complete": true
+  },
+  "session_metrics": {
+    "turn_count": 50
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-12T10:23:08.250525Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 2880,
+    "human_modified": 374,
+    "human_removed": 0,
+    "total_committed": 3090,
+    "total_lines_changed": 3254,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 96,
+      "agent_lines_removed": 12
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 4,
+      "user_lines_removed": 2,
+      "agent_lines_added": 706,
+      "agent_lines_removed": 15,
+      "user_added_per_file": {
+        "submission/evidence/entire-checkpoint.json": 4
+      },
+      "user_removed_per_file": {
+        "submission/evidence/entire-checkpoint.json": 2
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 4,
+      "user_lines_removed": 2,
+      "agent_lines_added": 828,
+      "agent_lines_removed": 16,
+      "user_added_per_file": {
+        "submission/evidence/entire-checkpoint.json": 4
+      },
+      "user_removed_per_file": {
+        "submission/evidence/entire-checkpoint.json": 2
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 4,
+      "user_lines_removed": 2,
+      "agent_lines_added": 828,
+      "agent_lines_removed": 16,
+      "user_added_per_file": {
+        "submission/evidence/entire-checkpoint.json": 4
+      },
+      "user_removed_per_file": {
+        "submission/evidence/entire-checkpoint.json": 2
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 4,
+      "user_lines_removed": 2,
+      "agent_lines_added": 1449,
+      "agent_lines_removed": 16,
+      "user_added_per_file": {
+        "submission/evidence/entire-checkpoint.json": 4
+      },
+      "user_removed_per_file": {
+        "submission/evidence/entire-checkpoint.json": 2
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 1278,
+      "user_lines_removed": 182,
+      "agent_lines_added": 1449,
+      "agent_lines_removed": 16,
+      "user_added_per_file": {
+        "README.md": 11,
+        "checkoutguard_BE/cmd/demorecord/capture.go": 90,
+        "checkoutguard_BE/cmd/demorecord/main.go": 460,
+        "checkoutguard_BE/internal/application/completion_test.go": 95,
+        "checkoutguard_BE/internal/application/decision_state_test.go": 43,
+        "checkoutguard_BE/internal/application/marketplace.go": 1,
+        "checkoutguard_BE/internal/application/model_recovery.go": 14,
+        "checkoutguard_BE/internal/application/model_recovery_test.go": 46,
+        "checkoutguard_BE/internal/application/prompts.go": 43,
+        "checkoutguard_BE/internal/application/runner.go": 11,
+        "checkoutguard_BE/internal/application/service.go": 19,
+        "checkoutguard_FE/src/presentation/dashboard/Dashboard.tsx": 50,
+        "checkoutguard_FE/src/presentation/state/navigationSlice.ts": 19,
+        "checkoutguard_FE/src/presentation/state/store.ts": 2,
+        "checkoutguard_FE/src/presentation/style.css": 13,
+        "docs/MODEL-CONNECTION-DIAGNOSIS.md": 82,
+        "docs/PROVIDER-CANDIDATE.md": 16,
+        "docs/examples/publicai-model.env.example": 1,
+        "docs/examples/publicai-pricing.env.example": 4,
+        "scripts/render-sandbox-demo.py": 30,
+        "submission/DEMO-SCRIPT.md": 74,
+        "submission/EVIDENCE.md": 24,
+        "submission/evidence/entire-checkpoint.json": 4,
+        "submission/evidence/sandbox-video-traces.json": 55,
+        "submission/evidence/sandbox-video.json": 71
+      },
+      "user_removed_per_file": {
+        "README.md": 2,
+        "checkoutguard_BE/cmd/demorecord/main.go": 47,
+        "checkoutguard_BE/internal/application/marketplace.go": 1,
+        "checkoutguard_BE/internal/application/model_recovery.go": 2,
+        "checkoutguard_BE/internal/application/prompts.go": 2,
+        "checkoutguard_BE/internal/application/runner.go": 3,
+        "checkoutguard_FE/src/presentation/dashboard/Dashboard.tsx": 7,
+        "checkoutguard_FE/src/presentation/state/store.ts": 1,
+        "docs/examples/publicai-model.env.example": 1,
+        "docs/examples/publicai-pricing.env.example": 4,
+        "scripts/render-sandbox-demo.py": 78,
+        "submission/DEMO-SCRIPT.md": 11,
+        "submission/EVIDENCE.md": 7,
+        "submission/evidence/entire-checkpoint.json": 2,
+        "submission/evidence/sandbox-video.json": 14
+      }
+    }
+  ]
+}

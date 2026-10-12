@@ -1,0 +1,41 @@
+apakah seperti ini checkpoint ?
+
+ create mode 100644 submission/evidence/model-diagnostics-trace.json
+boo@Boos-MacBook-Pro checkoutguard % git push origin main
+[entire] Pushing 1 checkpoint ref(s) to origin.................................
+[entire] Checkpoint ref push failed; retrying 1 ref(s) individually....................................................... pushed 1 of 1
+Enumerating objects: 99, done.
+Counting objects: 100% (99/99), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (56/56), done.
+Writing objects: 100% (58/58), 221.06 KiB | 24.56 MiB/s, done.
+Total 58 (delta 31), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (31/31), completed with 31 local objects.
+To https://github.com/fadillaoegi/checkoutGuard.git
+   0e21026..a134e4a  main -> main
+
+---
+
+bagaimana cara melengkapi runway numerik, memerlukan saldo kas bertanggal dan asumsi arus kas dan memeriksa bukti Entire ?
+
+kerjakan ya
+
+---
+
+oke lanjut
+
+---
+
+rekomendasi mu yang mana dan alasanya apa ?
+
+---
+
+oke sekarang bantu saya buatkan video demo untuk submition yaa
+
+---
+
+oke sekarang bantu saya buatkan video demo untuk submition yaa, jika ada error dalam demo hentikan demo nya yaa (demo untuk simulasi sandbox saja dulu) untuk demo shopee dan tokped jangan dulu . soalnya nanti kita buat demo terpisah untuk shopee dan toke ped agar nanti kita bisa menjelaskan di demo shopee dan dan tokped masih belum bisa . bagaimana menurut mu ?
+
+---
+
+semua fitur apakah sudah masuk kedalam video ? selain shopee dan tokped
